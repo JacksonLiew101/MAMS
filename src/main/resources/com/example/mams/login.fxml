@@ -44,12 +44,12 @@
             <PasswordField layoutX="75.0" layoutY="223.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" />
             <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="40.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@emailIcon.png" />
+                  <Image url="@info.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="39.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@password.png" />
+                  <Image url="@unlock.png" />
                </image>
             </ImageView>
             <Button fx:id="button2" layoutX="88.0" layoutY="279.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" style="-fx-background-color: E419C4; -fx-background-color: 7C17BA;" text="Button" textFill="WHITE" />
@@ -67,7 +67,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@exit.png" />
+                        <Image url="@delete-sign.png" />
                      </image>
                   </ImageView>
                </graphic>
