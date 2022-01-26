@@ -8,17 +8,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerDetails">
    <children>
-      <TableView fx:id="CustomerTable" layoutX="160.0" layoutY="203.0" prefHeight="354.0" prefWidth="660.0">
+      <TableView fx:id="CustomerTable" layoutX="160.0" layoutY="203.0" prefHeight="390.0" prefWidth="783.0">
         <columns>
-          <TableColumn fx:id="CustomerID" text="Customer ID" />
-          <TableColumn fx:id="FirstName" prefWidth="124.79998779296875" text="First Name" />
+          <TableColumn fx:id="CustomerID" prefWidth="90.39996337890625" text="Customer ID" />
+          <TableColumn fx:id="FirstName" prefWidth="165.60003662109375" text="First Name" />
+            <TableColumn fx:id="LastName" prefWidth="195.20001220703125" text="Last Name" />
             <TableColumn fx:id="Email" prefWidth="112.0001220703125" text="Email" />
             <TableColumn fx:id="PhoneNo" minWidth="0.0" prefWidth="115.199951171875" text="Phone No." />
             <TableColumn fx:id="CardID" minWidth="0.0" prefWidth="98.4000244140625" text="Card ID" />
-            <TableColumn fx:id="LastName" prefWidth="127.2000732421875" text="Last Name" />
         </columns>
       </TableView>
       <Text layoutX="160.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Table" />
-      <Button fx:id="connectButton" layoutX="150.0" layoutY="115.0" mnemonicParsing="false" onAction="#connectButton" text="show" />
+      <Button fx:id="connectButton" layoutX="150.0" layoutY="115.0" mnemonicParsing="false" onAction="#connectButton" text="show customer details" />
    </children>
 </AnchorPane>

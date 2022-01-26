@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class AlbumStock {
     @FXML
-    // <CustomerTable> is referring to the java class CustomerTables
+    // <CustomerTable> is referring to the java class MusicAlbum
     private TableView<MusicAlbum> AlbumTable;
     @FXML
     private TableColumn<MusicAlbum, Integer> albumID_col;
