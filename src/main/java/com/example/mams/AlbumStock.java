@@ -1,2 +1,4 @@
-package com.example.mams;public class AlbumStock {
+package com.example.mams;
+
+public class AlbumStock {
 }
