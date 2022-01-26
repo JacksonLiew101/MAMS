@@ -1,2 +1,4 @@
-package com.example.mams;public class SalesReport {
+package com.example.mams;
+
+public class SalesReport {
 }

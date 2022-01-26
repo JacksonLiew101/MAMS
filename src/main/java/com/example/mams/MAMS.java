@@ -14,7 +14,7 @@ public class MAMS extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homePage.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
         root.setOnMousePressed(event -> {
