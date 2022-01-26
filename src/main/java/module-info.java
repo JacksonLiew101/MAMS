@@ -10,6 +10,8 @@ module com.example.mams {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.logging;
+    requires java.sql;
+    requires mysql.connector.java;
 
     opens com.example.mams to javafx.fxml;
     exports com.example.mams;
