@@ -33,3 +33,4 @@ public class MAMS extends Application {
         launch();
     }
 }
+
