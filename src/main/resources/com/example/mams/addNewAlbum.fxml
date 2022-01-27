@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.AddNewAlbum">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Album">
+               <font>
+                  <Font name="System Bold Italic" size="47.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox prefHeight="51.0" prefWidth="900.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name" wrappingWidth="82.93676567077637">
+               <HBox.margin>
+                  <Insets left="70.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <ImageView fitHeight="34.0" fitWidth="36.0">
+               <image>
+                  <Image url="@music-record.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="AlbumNameInput" promptText="Enter" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="110.0" prefHeight="51.0" prefWidth="900.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Artist" wrappingWidth="82.93676567077637">
+               <HBox.margin>
+                  <Insets left="70.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <ImageView fitHeight="36.0" fitWidth="32.0">
+               <image>
+                  <Image url="@taylor-swift.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="ArtistInput" promptText="Enter" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="161.0" prefHeight="51.0" prefWidth="900.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Genre" wrappingWidth="82.93676567077637">
+               <HBox.margin>
+                  <Insets left="70.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <ImageView fitHeight="38.0" fitWidth="31.0">
+               <image>
+                  <Image url="@musical-notes.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="GenreInput" promptText="Enter" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="212.0" prefHeight="51.0" prefWidth="900.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Year of Release" wrappingWidth="82.93676567077637">
+               <HBox.margin>
+                  <Insets left="70.0" right="2.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <ImageView fitHeight="38.0" fitWidth="35.0">
+               <image>
+                  <Image url="@new-year-calendar-.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="YearOfReleaseInput" promptText="Enter" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="264.0" prefHeight="51.0" prefWidth="900.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="70.93676567077637">
+               <HBox.margin>
+                  <Insets left="70.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <ImageView fitHeight="39.0" fitWidth="45.0">
+               <image>
+                  <Image url="@move-stock.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <TextField fx:id="AlbumQuantityInput" promptText="Enter" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="315.0" prefHeight="51.0" prefWidth="900.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Album Unit Price" wrappingWidth="82.93676567077637">
+               <HBox.margin>
+                  <Insets left="70.0" />
+               </HBox.margin>
+            </Text>
+            <ImageView fitHeight="42.0" fitWidth="42.0">
+               <image>
+                  <Image url="@price-tag-usd.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="AlbumUnitPriceInput" promptText="Enter" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="51.0" prefWidth="900.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="26.0" prefWidth="165.0" text="Add">
+               <HBox.margin>
+                  <Insets left="30.0" right="2.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" text="Clean">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="50.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

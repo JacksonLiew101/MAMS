@@ -2,17 +2,31 @@ package com.example.mams;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class AlbumStock {
+public class AlbumStock implements Initializable {
+
+
     @FXML
     // <CustomerTable> is referring to the java class MusicAlbum
     private TableView<MusicAlbum> AlbumTable;
@@ -30,9 +44,13 @@ public class AlbumStock {
     private TableColumn<MusicAlbum,Integer> quantityOnHand_col;
     @FXML
     private TableColumn<MusicAlbum,Integer> albumUnitPrice_col;
+    @FXML
+    private Button music, refreshButton;
 
-    ObservableList<MusicAlbum> oblist = FXCollections.observableArrayList();
-    public void connectButton (ActionEvent event) throws SQLException {
+
+    ObservableList<MusicAlbum> MusicAlbumList = FXCollections.observableArrayList();
+
+    public void loadData(){
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
@@ -41,7 +59,7 @@ public class AlbumStock {
 
             while(rs.next()) {
                 //columnLabel is referring to the SQL table column label
-                oblist.add(new MusicAlbum(rs.getInt("ALBUM_ID"),
+                MusicAlbumList.add(new MusicAlbum(rs.getInt("ALBUM_ID"),
                         rs.getString("ALBUM_NAME"),
                         rs.getString("ARTIST"),
                         rs.getString("GENRE"),
@@ -61,7 +79,31 @@ public class AlbumStock {
         yearOfRelease_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("YearOfRelease"));
         quantityOnHand_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("QuantityOnHand"));
         albumUnitPrice_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumUnitPrice"));
-        AlbumTable.setItems(oblist);
+        AlbumTable.setItems(MusicAlbumList);
 
     }
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        music.setCursor(Cursor.HAND);
+        refreshButton.setCursor(Cursor.HAND);
+        loadData();
+    }
+
+
+    @FXML
+    private void addNewAlbum(MouseEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addNewAlbum.fxml")));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+    }
+
+    @FXML
+    private void refreshTable(MouseEvent event){
+        MusicAlbumList.clear();
+        loadData();
+    }
+
 }
