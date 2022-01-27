@@ -1,5 +1,4 @@
 # Make sure your table data is empty before inserting the data
-
 INSERT INTO CARD
 (CARD_ID, CARD_NO, CARD_EXPIRY_YEAR, CARD_EXPIRY_MONTH, CVV, CARDHOLDER_NAME)
 VALUES
@@ -42,70 +41,75 @@ VALUES
 
 SELECT * FROM CUSTOMER;
 
-INSERT INTO RENTAL
-(RENTAL_ID, CUSTOMER_ID, RENTAL_DATE, RENTAL_STATUS, TOTAL_RENTAL_COST)
-VALUES
-(30000, 10000, '2022-01-01', 'RETURNED', 10.00),
-(30001, 10001, '2022-01-02', 'RETURNED', 10.00),
-(30002, 10002, '2022-01-03', 'RETURNED', 10.00),
-(30003, 10003, '2022-01-04', 'RETURNED', 10.00),
-(30004, 10004, '2022-01-05', 'RETURNED', 20.00),
-(30005, 10005, '2022-01-06', 'RETURNED', 20.00),
-(30006, 10006, '2022-01-07', 'RETURNED', 10.00),
-(30007, 10007, '2022-01-08', 'RETURNED', 10.00),
-(30008, 10008, '2022-01-09', 'RETURNED', 20.00),
-(30009, 10009, '2022-01-10', 'RETURNED', 10.00),
-(30010, 10010, '2022-01-11', 'RETURNED', 10.00),
-(30011, 10011, '2022-01-12', 'RETURNED', 10.00),
-(30012, 10012, '2022-01-13', 'RETURNED', 30.00),
-(30013, 10013, '2022-01-14', 'RETURNED', 10.00),
-(30014, 10014, '2022-01-15', 'RETURNED', 20.00);
-
-SELECT * FROM RENTAL;
-
 INSERT INTO ALBUM
 (ALBUM_ID, ALBUM_NAME, ARTIST, GENRE, YEAR_OF_RELEASE, QUANTITY_ON_HAND, ALBUM_UNIT_PRICE)
 VALUES
-(40000, 'Senorita', 'Shawn Mendes', 'canadian pop', 2019, 50, 10.00),
-(40001, 'boyfriend (with Social House)', 'Ariana Grande', 'dance pop', 2019, 50, 10.00),
-(40002, 'Beautiful People (feat. Khalid)', 'Ed Sheeran', 'pop', 2019, 50, 10.00),
-(40003, 'I Don''t Care (with Justin Bieber)', 'Ed Sheeran', 'pop', 2019, 50, 10.00),
-(40004, 'bad guy', 'Billie Eilish', 'electropop', 2019, 50, 10.00),
-(40005, 'If I Can''t Have You', 'Shawn Mendes', 'canadian pop', 2019, 50, 10.00),
-(40006, 'Takeaway', 'The Chainsmokers', 'edm', 2019, 50, 10.00),
-(40007, '7 rings', 'Ariana Grande', 'dance pop', 2019, 50, 10.00),
-(40008, 'Never Really Over', 'Katy Perry', 'dance pop', 2019, 50, 10.00),
-(40009, 'Antisocial (with Travis Scott)', 'Ed Sheeran', 'pop', 2019, 50, 10.00),
-(40010, 'You Need To Calm Down', 'Taylor Swift', 'dance pop', 2019, 50, 10.00),
-(40011, 'One Thing Right', 'Marshmello', 'brostep', 2019, 50, 10.00),
-(40012, 'Happier', 'Marshmello', 'brostep', 2019, 50, 10.00),
-(40013, 'Call You Mine', 'The Chainsmokers', 'edm', 2019, 50, 10.00),
-(40014, 'Cross Me (feat. Chance the Rapper & PnB Rock)', 'Ed Sheeran', 'pop', 2019, 50, 10.00);
+    (40000, 'Senorita', 'Shawn Mendes', 'canadian pop', 2019, 50, 10.00),
+    (40001, 'boyfriend (with Social House)', 'Ariana Grande', 'dance pop', 2019, 50, 10.00),
+    (40002, 'Beautiful People (feat. Khalid)', 'Ed Sheeran', 'pop', 2019, 50, 10.00),
+    (40003, 'I Don''t Care (with Justin Bieber)', 'Ed Sheeran', 'pop', 2019, 50, 10.00),
+    (40004, 'bad guy', 'Billie Eilish', 'electropop', 2019, 50, 10.00),
+    (40005, 'If I Can''t Have You', 'Shawn Mendes', 'canadian pop', 2019, 50, 10.00),
+    (40006, 'Takeaway', 'The Chainsmokers', 'edm', 2019, 50, 10.00),
+    (40007, '7 rings', 'Ariana Grande', 'dance pop', 2019, 50, 10.00),
+    (40008, 'Never Really Over', 'Katy Perry', 'dance pop', 2019, 50, 10.00),
+    (40009, 'Antisocial (with Travis Scott)', 'Ed Sheeran', 'pop', 2019, 50, 10.00),
+    (40010, 'You Need To Calm Down', 'Taylor Swift', 'dance pop', 2019, 50, 10.00),
+    (40011, 'One Thing Right', 'Marshmello', 'brostep', 2019, 50, 10.00),
+    (40012, 'Happier', 'Marshmello', 'brostep', 2019, 50, 10.00),
+    (40013, 'Call You Mine', 'The Chainsmokers', 'edm', 2019, 50, 10.00),
+    (40014, 'Cross Me (feat. Chance the Rapper & PnB Rock)', 'Ed Sheeran', 'pop', 2019, 50, 10.00);
 
 SELECT * FROM ALBUM;
 
-### Bug: Unable to insert into table, don't run this command first
-INSERT INTO ALBUM_RENTAL
-(LINE_NUMBER, RENTAL_ID, ALBUM_ID, QUANTITY_ALBUM_RENTED, ALBUM_UNIT_PRICE_WHEN_RENTED, TOTAL_ALBUM_COST, RENTAL_STATUS_ALBUM_RENTAL)
+INSERT INTO RENTAL
+(RENTAL_ID, CUSTOMER_ID, RENTAL_DATE)
 VALUES
-(50000, 30000, 40000, 1, 10.00, 10.00, 'RETURNED'),
-(50001, 30001, 40001, 1, 10.00, 10.00, 'RETURNED'),
-(50002, 30002, 40002, 1, 10.00, 10.00, 'RETURNED'),
-(50003, 30003, 40003, 1, 10.00, 10.00, 'RETURNED'),
-(50004, 30004, 40004, 1, 10.00, 10.00, 'RETURNED'),
-(50005, 30004, 40005, 1, 10.00, 10.00, 'RETURNED'),
-(50006, 30005, 40006, 1, 10.00, 10.00, 'RETURNED'),
-(50007, 30005, 40007, 1, 10.00, 10.00, 'RETURNED'),
-(50008, 30006, 40008, 1, 10.00, 10.00, 'RETURNED'),
-(50009, 30007, 40009, 1, 10.00, 10.00, 'RETURNED'),
-(50010, 30008, 40010, 2, 10.00, 20.00, 'RETURNED'),
-(50011, 30009, 40011, 1, 10.00, 10.00, 'RETURNED'),
-(50012, 30010, 40012, 1, 10.00, 10.00, 'RETURNED'),
-(50013, 30011, 40013, 1, 10.00, 10.00, 'RETURNED'),
-(50014, 30012, 40014, 1, 10.00, 10.00, 'RETURNED'),
-(50015, 30012, 40000, 2, 10.00, 20.00, 'RETURNED'),
-(50016, 30013, 40001, 1, 10.00, 10.00, 'RETURNED'),
-(50017, 30014, 40002, 2, 10.00, 20.00, 'RETURNED');
+(30000, 10000, '2022-01-01'),
+(30001, 10001, '2022-01-02'),
+(30002, 10002, '2022-01-03'),
+(30003, 10003, '2022-01-04'),
+(30004, 10004, '2022-01-05'),
+(30005, 10005, '2022-01-06'),
+(30006, 10006, '2022-01-07'),
+(30007, 10007, '2022-01-08'),
+(30008, 10008, '2022-01-09'),
+(30009, 10009, '2022-01-10'),
+(30010, 10010, '2022-01-11'),
+(30011, 10011, '2022-01-12'),
+(30012, 10012, '2022-01-13'),
+(30013, 10013, '2022-01-14'),
+(30014, 10014, '2022-01-15');
+
+SELECT * FROM RENTAL;
+
+
+INSERT INTO ALBUM_RENTAL
+(LINE_NUMBER, RENTAL_ID, ALBUM_ID, QUANTITY_ALBUM_RENTED, ALBUM_UNIT_PRICE_WHEN_RENTED)
+VALUES
+(50000, 30000, 40000, 3,10.00),
+(50001, 30001, 40001, 4,10.00),
+(50002, 30002, 40002, 5,10.00),
+(50003, 30003, 40003, 6,10.00),
+(50004, 30004, 40004, 7,10.00),
+(50005, 30004, 40005, 8,10.00),
+(50006, 30005, 40006, 9,10.00),
+(50007, 30005, 40007, 10,10.00),
+(50008, 30006, 40008, 11,10.00),
+(50009, 30007, 40009, 12,10.00),
+(50010, 30008, 40010, 13, 10.00),
+(50011, 30009, 40011, 14,10.00),
+(50012, 30010, 40012, 15,10.00),
+(50013, 30011, 40013, 16,10.00),
+(50014, 30012, 40014, 17,10.00),
+(50015, 30012, 40000, 18, 10.00),
+(50016, 30013, 40001, 19,10.00),
+(50017, 30014, 40002, 20, 10.00);
 
 SELECT * FROM ALBUM_RENTAL;
 
+### SALES REPORT
+SELECT album.ALBUM_ID, album.ALBUM_NAME,  album.ARTIST,
+       album.ALBUM_UNIT_PRICE, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented,
+       SUM(ar.TOTAL_ALBUM_COST) as Total_Sales
+FROM album inner join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID GROUP BY ar.ALBUM_ID;
