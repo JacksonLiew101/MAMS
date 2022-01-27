@@ -101,4 +101,10 @@ public class AddNewAlbum implements Initializable {
     }
 
 
+    public void setUpdate(boolean b) {
+
+    }
+
+    public void setTextField(String name, String artist, String genre,int year, int quantity, int albumUnitPrice) {
+    }
 }

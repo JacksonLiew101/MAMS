@@ -12,6 +12,7 @@ module com.example.mams {
     requires java.logging;
     requires java.sql;
     requires mysql.connector.java;
+    requires fontawesomefx;
 
     opens com.example.mams to javafx.fxml;
     exports com.example.mams;

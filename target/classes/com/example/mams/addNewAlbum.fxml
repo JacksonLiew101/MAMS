@@ -146,17 +146,17 @@
       </HBox>
       <HBox prefHeight="51.0" prefWidth="900.0">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="26.0" prefWidth="165.0" text="Add">
+            <Button mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: #34D999;" text="Add" textFill="WHITE">
                <HBox.margin>
                   <Insets left="30.0" right="2.0" top="10.0" />
                </HBox.margin>
                <font>
-                  <Font size="25.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" text="Clean">
+            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" style="-fx-background-color: #FF6A59;" text="Clean" textFill="#f2f2f2">
                <font>
-                  <Font size="25.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
                <HBox.margin>
                   <Insets left="50.0" top="10.0" />
