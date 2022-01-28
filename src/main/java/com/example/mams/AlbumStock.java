@@ -2,6 +2,7 @@ package com.example.mams;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -91,7 +92,7 @@ public class AlbumStock implements Initializable {
 
 
     @FXML
-    private void addNewAlbum(MouseEvent event) throws IOException {
+    private void addNewAlbum(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addNewAlbum.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
