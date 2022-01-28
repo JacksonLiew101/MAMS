@@ -78,7 +78,18 @@ public class AddNewAlbum implements Initializable {
     }
 
     private void getQuery() {
-        query = "INSERT INTO `ALBUM` (`ALBUM_NAME`, `ARTIST`, `GENRE`, `YEAR_OF_RELEASE`, `QUANTITY_ON_HAND`, `ALBUM_UNIT_PRICE`) VALUES (?,?,?,?,?,?)";
+
+        if (update == false){
+            query = "INSERT INTO `ALBUM` (`ALBUM_NAME`, `ARTIST`, `GENRE`, `YEAR_OF_RELEASE`, `QUANTITY_ON_HAND`, `ALBUM_UNIT_PRICE`) VALUES (?,?,?,?,?,?)";
+        }else{
+            query = "UPDATE `ALBUM` SET "
+                    + "`ALBUM_NAME`=?,"
+                    + "`ARTIST`=?,"
+                    + "`GENRE`=?,"
+                    + "`YEAR_OF_RELEASE`=?,"
+                    + "`QUANTITY_ON_HAND`=?,"
+                    + "`ALBUM_UNIT_PRICE`= ? WHERE `ALBUM_ID` = "+ albumId;
+        }
     }
 
     private void insert(){
