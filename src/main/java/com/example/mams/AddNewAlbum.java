@@ -38,6 +38,10 @@ public class AddNewAlbum implements Initializable {
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
     DatabaseConnection connectNow = new DatabaseConnection();
+    MusicAlbum musicAlbum = null;
+    private boolean update;
+    int albumId;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -102,9 +106,16 @@ public class AddNewAlbum implements Initializable {
 
 
     public void setUpdate(boolean b) {
-
+        this.update = b;
     }
 
-    public void setTextField(String name, String artist, String genre,int year, int quantity, int albumUnitPrice) {
+    public void setTextField(int id, String name, String artist, String genre,int year, int quantity, int albumUnitPrice) {
+        albumId = id;
+        AlbumNameInput.setText(name);
+        ArtistInput.setText(artist);
+        GenreInput.setText(genre);
+        YearOfReleaseInput.setText(String.valueOf(year));
+        AlbumQuantityInput.setText(String.valueOf(quantity));
+        AlbumUnitPriceInput.setText(String.valueOf(albumUnitPrice));
     }
 }

@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.AlbumStock">
    <children>
-      <TableView fx:id="AlbumTable" layoutX="147.0" layoutY="190.0" prefHeight="419.0" prefWidth="963.0">
+      <TableView fx:id="AlbumTable" layoutX="87.0" layoutY="190.0" prefHeight="419.0" prefWidth="985.0">
         <columns>
           <TableColumn fx:id="albumID_col" prefWidth="75.0" text="Album ID" />
           <TableColumn fx:id="albumName_col" prefWidth="250.4000244140625" text="Album Name" />
