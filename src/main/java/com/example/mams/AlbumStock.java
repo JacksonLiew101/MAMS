@@ -10,10 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,6 +29,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AlbumStock implements Initializable {
@@ -147,7 +145,7 @@ public class AlbumStock implements Initializable {
                         editIcon.setCursor(Cursor.HAND);
 
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
-
+                            DialogBoxToShowNowIsDeletingData();
                             try {
                                 musicAlbum = AlbumTable.getSelectionModel().getSelectedItem();
                                 query = "DELETE FROM `ALBUM` WHERE `ALBUM_ID` ="+musicAlbum.getAlbumID();
@@ -167,7 +165,7 @@ public class AlbumStock implements Initializable {
                         });
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
 
-
+                            DialogBoxToShowNowIsEditData();
                             musicAlbum = AlbumTable.getSelectionModel().getSelectedItem();
                             FXMLLoader loader = new FXMLLoader ();
                             loader.setLocation(getClass().getResource("addNewAlbum.fxml"));
@@ -210,16 +208,67 @@ public class AlbumStock implements Initializable {
 
     @FXML
     private void addNewAlbum(ActionEvent event) throws IOException {
+        DialogBoxToShowNowIsInsertNewData();
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addNewAlbum.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
+
     }
 
     @FXML
     private void refreshTable(MouseEvent event) {
         refreshData();
+    }
+
+    private void DialogBoxToShowNowIsInsertNewData(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Add new album");
+        alert.setContentText("You are adding new album in this database");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isEmpty()){
+            System.out.println("Alert closed");
+        }
+        else if (result.get() == ButtonType.OK){
+            System.out.println("OK!");
+        }
+        else if (result.get() == ButtonType.CANCEL){
+            System.out.println("Never!");
+        }
+    }
+    private void DialogBoxToShowNowIsEditData(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Editing existing album");
+        alert.setContentText("You are editing existing album in this database");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isEmpty()){
+            System.out.println("Alert closed");
+        }
+        else if (result.get() == ButtonType.OK){
+            System.out.println("OK!");
+        }
+        else if (result.get() == ButtonType.CANCEL){
+            System.out.println("Never!");
+        }
+    }
+    private void DialogBoxToShowNowIsDeletingData(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Deleting existing album");
+        alert.setContentText("This album is deleted from this database successfully");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isEmpty()){
+            System.out.println("Alert closed");
+        }
+        else if (result.get() == ButtonType.OK){
+            System.out.println("OK!");
+        }
+        else if (result.get() == ButtonType.CANCEL){
+            System.out.println("Never!");
+        }
     }
 }

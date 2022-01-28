@@ -3,6 +3,7 @@ package com.example.mams;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -34,6 +35,9 @@ public class AddNewAlbum implements Initializable {
 
     @FXML
     private TextField AlbumUnitPriceInput;
+
+    @FXML
+    private Button music;
 
     String query = null;
     Connection connection = null;
@@ -133,8 +137,8 @@ public class AddNewAlbum implements Initializable {
     }
     private void DialogBoxInAddNewAlbum() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("New Album Added Successfully!");
-        alert.setContentText("The new album information is added successfully");
+        alert.setTitle("New Album Added / Changed Successfully!");
+        alert.setContentText("The new album information is added  / changed successfully");
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isEmpty()){
@@ -147,4 +151,6 @@ public class AddNewAlbum implements Initializable {
             System.out.println("Never!");
         }
     }
+
+
 }

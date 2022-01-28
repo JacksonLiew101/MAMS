@@ -14,7 +14,7 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add New Album">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Album Details">
                <font>
                   <Font name="System Bold Italic" size="47.0" />
                </font>
@@ -146,17 +146,17 @@
       </HBox>
       <HBox prefHeight="51.0" prefWidth="900.0">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="26.0" prefWidth="165.0" text="Add">
+            <Button mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="52.0" prefWidth="213.0" style="-fx-background-color: #34D999;" text="Insert/Update" textFill="WHITE">
                <HBox.margin>
                   <Insets left="30.0" right="2.0" top="10.0" />
                </HBox.margin>
                <font>
-                  <Font size="25.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" text="Clear">
+            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" style="-fx-background-color: #FF6A59;" text="Clear" textFill="#f2f2f2">
                <font>
-                  <Font size="25.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
                <HBox.margin>
                   <Insets left="50.0" top="10.0" />
