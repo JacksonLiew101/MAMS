@@ -146,7 +146,7 @@ public class AddNewCustomer implements Initializable {
 
     private void DialogBoxInAddNewCustomer() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Alert!");
+        alert.setTitle("New Customer Added Successfully!");
         alert.setContentText("The new customer information is added successfully");
         Optional<ButtonType> result = alert.showAndWait();
 

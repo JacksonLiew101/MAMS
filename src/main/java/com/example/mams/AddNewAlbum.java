@@ -105,7 +105,7 @@ public class AddNewAlbum implements Initializable {
 
     private void DialogBoxInAddNewAlbum() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Alert!");
+        alert.setTitle("New Album Added Successfully!");
         alert.setContentText("The new album information is added successfully");
         Optional<ButtonType> result = alert.showAndWait();
 

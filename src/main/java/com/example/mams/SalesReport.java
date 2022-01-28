@@ -4,15 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class SalesReport {
+public class SalesReport implements Initializable {
 
     @FXML
     // <CustomerTable> is referring to the java class SalesReportTableClass
@@ -32,7 +35,7 @@ public class SalesReport {
 
     ObservableList<SalesReportTableClass> oblist = FXCollections.observableArrayList();
 
-    public void connectButton (ActionEvent event) throws SQLException {
+    public void loadData() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
@@ -61,5 +64,10 @@ public class SalesReport {
         totalSales_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,Double>("TotalSales"));
         salesReportTable.setItems(oblist);
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadData();
     }
 }
