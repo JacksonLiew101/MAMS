@@ -3,6 +3,7 @@ package com.example.mams;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -11,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddNewAlbum implements Initializable {
@@ -52,9 +54,9 @@ public class AddNewAlbum implements Initializable {
         String YearOfReleaseText = YearOfReleaseInput.getText();
         String AlbumQuantityText  =AlbumQuantityInput.getText();
         String AlbumUnitPriceText = AlbumUnitPriceInput.getText();
-        int YearOfRelease =  Integer.parseInt(YearOfReleaseText);
-        int  AlbumQuantity = Integer.parseInt(AlbumQuantityText);
-        double AlbumUnitPrice = Double.parseDouble(AlbumUnitPriceText);
+//        int YearOfRelease =  Integer.parseInt(YearOfReleaseText);
+//        int  AlbumQuantity = Integer.parseInt(AlbumQuantityText);
+//        double AlbumUnitPrice = Double.parseDouble(AlbumUnitPriceText);
 
         if(AlbumName.isEmpty()|| Artist.isEmpty() ||
                 Genre.isEmpty() || YearOfReleaseText.isEmpty() ||
@@ -69,6 +71,7 @@ public class AddNewAlbum implements Initializable {
         {
             getQuery();
             insert();
+            DialogBoxInAddNewAlbum();
             clean();
         }
     }
@@ -100,5 +103,20 @@ public class AddNewAlbum implements Initializable {
        AlbumUnitPriceInput.setText(null);
     }
 
+    private void DialogBoxInAddNewAlbum() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Alert!");
+        alert.setContentText("The new album information is added successfully");
+        Optional<ButtonType> result = alert.showAndWait();
 
+        if(result.isEmpty()){
+            System.out.println("Alert closed");
+        }
+        else if (result.get() == ButtonType.OK){
+            System.out.println("OK!");
+        }
+        else if (result.get() == ButtonType.CANCEL){
+            System.out.println("Never!");
+        }
+    }
 }

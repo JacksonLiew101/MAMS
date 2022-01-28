@@ -3,23 +3,34 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class CustomerDetails {
+public class CustomerDetails implements Initializable {
 
     @FXML
-   private Button connectButton;
+    private Button AddCustomer;
+    @FXML
+    private Button RefreshButton;
     @FXML
     // <CustomerTable> is referring to the java class CustomerTables
     private TableView<CustomerTable> CustomerTable;
@@ -35,9 +46,10 @@ public class CustomerDetails {
     private TableColumn<CustomerTable,String> PhoneNo;
     @FXML
     private TableColumn<CustomerTable,Integer> CardID;
-    ObservableList<CustomerTable> oblist = FXCollections.observableArrayList();
+    ObservableList<CustomerTable> CustomerList = FXCollections.observableArrayList();
 
-    public void connectButton (ActionEvent event) throws SQLException {
+
+    public void loadData(){
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
@@ -46,7 +58,7 @@ public class CustomerDetails {
 
             while(rs.next()) {
                 //columnLabel is referring to the SQL table column label
-                oblist.add(new CustomerTable(rs.getInt("CUSTOMER_ID"),
+                CustomerList.add(new CustomerTable(rs.getInt("CUSTOMER_ID"),
                         rs.getString("CUSTOMER_F_NAME"),
                         rs.getString("CUSTOMER_L_NAME"),
                         rs.getString("CUSTOMER_EMAIL"),
@@ -64,11 +76,31 @@ public class CustomerDetails {
         Email.setCellValueFactory(new PropertyValueFactory<CustomerTable,String>("Email"));
         PhoneNo.setCellValueFactory(new PropertyValueFactory<CustomerTable,String>("PhoneNo"));
         CardID.setCellValueFactory(new PropertyValueFactory<CustomerTable,Integer>("CardID"));
-        CustomerTable.setItems(oblist);
-
-
-
-
+        CustomerTable.setItems(CustomerList);
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        AddCustomer.setCursor(Cursor.HAND);
+        RefreshButton.setCursor(Cursor.HAND);
+        loadData();
+    }
+
+    @FXML
+    private void refreshTable(MouseEvent event){
+        CustomerList.clear();
+        loadData();
+    }
+
+    @FXML
+    private void AddNewCustomer(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddNewCustomer.fxml")));
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+    }
+
 
 }
