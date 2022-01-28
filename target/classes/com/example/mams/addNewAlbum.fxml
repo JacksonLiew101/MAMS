@@ -154,7 +154,7 @@
                   <Font size="25.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" text="Clean">
+            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" text="Clear">
                <font>
                   <Font size="25.0" />
                </font>
