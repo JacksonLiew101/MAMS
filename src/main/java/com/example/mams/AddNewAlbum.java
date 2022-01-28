@@ -40,6 +40,10 @@ public class AddNewAlbum implements Initializable {
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
     DatabaseConnection connectNow = new DatabaseConnection();
+    MusicAlbum musicAlbum = null;
+    private boolean update;
+    int albumId;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -54,7 +58,7 @@ public class AddNewAlbum implements Initializable {
         String YearOfReleaseText = YearOfReleaseInput.getText();
         String AlbumQuantityText  =AlbumQuantityInput.getText();
         String AlbumUnitPriceText = AlbumUnitPriceInput.getText();
-//        int YearOfRelease =  Integer.parseInt(YearOfReleaseText);
+        //        int YearOfRelease =  Integer.parseInt(YearOfReleaseText);
 //        int  AlbumQuantity = Integer.parseInt(AlbumQuantityText);
 //        double AlbumUnitPrice = Double.parseDouble(AlbumUnitPriceText);
 
@@ -77,7 +81,18 @@ public class AddNewAlbum implements Initializable {
     }
 
     private void getQuery() {
-        query = "INSERT INTO `ALBUM` (`ALBUM_NAME`, `ARTIST`, `GENRE`, `YEAR_OF_RELEASE`, `QUANTITY_ON_HAND`, `ALBUM_UNIT_PRICE`) VALUES (?,?,?,?,?,?)";
+
+        if (update == false){
+            query = "INSERT INTO `ALBUM` (`ALBUM_NAME`, `ARTIST`, `GENRE`, `YEAR_OF_RELEASE`, `QUANTITY_ON_HAND`, `ALBUM_UNIT_PRICE`) VALUES (?,?,?,?,?,?)";
+        }else{
+            query = "UPDATE `ALBUM` SET "
+                    + "`ALBUM_NAME`=?,"
+                    + "`ARTIST`=?,"
+                    + "`GENRE`=?,"
+                    + "`YEAR_OF_RELEASE`=?,"
+                    + "`QUANTITY_ON_HAND`=?,"
+                    + "`ALBUM_UNIT_PRICE`= ? WHERE `ALBUM_ID` = "+ albumId;
+        }
     }
 
     private void insert(){
@@ -103,6 +118,19 @@ public class AddNewAlbum implements Initializable {
        AlbumUnitPriceInput.setText(null);
     }
 
+    public void setUpdate(boolean b) {
+        this.update = b;
+    }
+
+    public void setTextField(int id, String name, String artist, String genre,int year, int quantity, int albumUnitPrice) {
+        albumId = id;
+        AlbumNameInput.setText(name);
+        ArtistInput.setText(artist);
+        GenreInput.setText(genre);
+        YearOfReleaseInput.setText(String.valueOf(year));
+        AlbumQuantityInput.setText(String.valueOf(quantity));
+        AlbumUnitPriceInput.setText(String.valueOf(albumUnitPrice));
+    }
     private void DialogBoxInAddNewAlbum() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("New Album Added Successfully!");
