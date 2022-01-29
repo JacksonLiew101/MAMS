@@ -3,8 +3,10 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
@@ -53,5 +55,16 @@
             <Image url="@album.png" />
          </image>
       </ImageView>
+      <TextField fx:id="searchTextfield" layoutX="863.0" layoutY="321.0" prefHeight="31.0" prefWidth="219.0" promptText="Enter Keywords Here" />
+      <ImageView fitHeight="20.0" fitWidth="40.0" layoutX="843.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@search.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="761.0" layoutY="325.0" text="Search Item">
+         <font>
+            <Font name="System Bold" size="14.666666984558105" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
