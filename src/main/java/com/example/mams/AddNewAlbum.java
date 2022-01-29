@@ -2,6 +2,7 @@ package com.example.mams;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -37,7 +38,7 @@ public class AddNewAlbum implements Initializable {
     private TextField AlbumUnitPriceInput;
 
     @FXML
-    private Button music;
+    private Button InsertUpdateButton,clear;
 
     String query = null;
     Connection connection = null;
@@ -49,7 +50,8 @@ public class AddNewAlbum implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        InsertUpdateButton.setCursor(Cursor.HAND);
+        clear.setCursor(Cursor.HAND);
     }
 
     @FXML
@@ -61,9 +63,38 @@ public class AddNewAlbum implements Initializable {
         String YearOfReleaseText = YearOfReleaseInput.getText();
         String AlbumQuantityText  =AlbumQuantityInput.getText();
         String AlbumUnitPriceText = AlbumUnitPriceInput.getText();
-        int YearOfRelease =  Integer.parseInt(YearOfReleaseText);
-        int  AlbumQuantity = Integer.parseInt(AlbumQuantityText);
-        double AlbumUnitPrice = Double.parseDouble(AlbumUnitPriceText);
+        int YearOfRelease =  0;
+
+        try{
+            YearOfRelease =Integer.parseInt(YearOfReleaseText);
+        }
+        catch(NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Year of release is empty.");
+            alert.showAndWait();
+        }
+        int  AlbumQuantity = 0;
+        try{
+            AlbumQuantity = Integer.parseInt(AlbumQuantityText);
+        }
+        catch(NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Album quantity is empty.");
+            alert.showAndWait();
+        }
+
+        double AlbumUnitPrice = 0;
+        try{
+            AlbumUnitPrice = Double.parseDouble(AlbumUnitPriceText);
+        }
+        catch(NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Album unit price is empty.");
+            alert.showAndWait();
+        }
 
         if(AlbumName.isEmpty()|| Artist.isEmpty() ||
                 Genre.isEmpty() || YearOfReleaseText.isEmpty() ||

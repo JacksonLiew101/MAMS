@@ -3,7 +3,9 @@ package com.example.mams;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -37,6 +40,8 @@ public class AddNewCustomer implements Initializable {
     private TextField CVVInput;
     @FXML
     private TextField CardHolderNameInput;
+    @FXML
+    private Button save, clearButton;
 
     String query = null;
     Connection connection = null;
@@ -49,7 +54,8 @@ public class AddNewCustomer implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        save.setCursor(Cursor.HAND);
+        clearButton.setCursor(Cursor.HAND);
     }
 
     public boolean isValid(String email) {
@@ -73,11 +79,51 @@ public class AddNewCustomer implements Initializable {
         String CVVText  =CVVInput.getText();
         String CardHolderName = CardHolderNameInput.getText();
 
-        long CardNumber=  Long.parseLong(CardNumberText);
-        System.out.println(CardNumber);
-        int  CardExpiryYear = Integer.parseInt(CardExpiryYearText);
-        int CardExpiryMonth =  Integer.parseInt(CardExpiryMonthText);
-        int  CVV = Integer.parseInt(CVVText);
+        long CardNumber= 0;
+
+        try{
+            CardNumber = Long.parseLong(CardNumberText);
+        }
+        catch(NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Card number is empty.");
+            alert.showAndWait();
+        }
+
+        int  CardExpiryYear = 0;
+        try{
+            CardExpiryYear = Integer.parseInt(CardExpiryYearText);
+        }
+        catch(NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Card expiry year is empty.");
+            alert.showAndWait();
+        }
+
+        int  CardExpiryMonth  = 0;
+        try{
+            CardExpiryMonth =  Integer.parseInt(CardExpiryMonthText);
+        }
+        catch(NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Card expiry month is empty.");
+            alert.showAndWait();
+        }
+
+        int  CVV  = 0;
+        try{
+            CVV = Integer.parseInt(CVVText);
+        }
+        catch(NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("CVV is empty.");
+            alert.showAndWait();
+        }
+
 
         if(FirstName.isEmpty()|| LastName.isEmpty() ||
                 Email.isEmpty() || PhoneNo.isEmpty() ||
