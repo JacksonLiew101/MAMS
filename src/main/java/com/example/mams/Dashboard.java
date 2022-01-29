@@ -140,7 +140,6 @@ public class Dashboard implements Initializable {
         }
         totalAlbum_label.setText(Integer.toString(TotalAlbum));
         System.out.println(TotalAlbum);
-        System.out.println("Hello");
     }
 }
 
