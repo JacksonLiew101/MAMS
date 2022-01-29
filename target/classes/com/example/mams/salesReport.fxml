@@ -27,9 +27,9 @@
             </columns>
         </TableView>
         <Text fill="#4a4444" layoutX="20.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Report">
-         <font>
-            <Font name="Roboto" size="40.0" />
-         </font></Text>
+            <font>
+                <Font name="Roboto" size="40.0" />
+            </font></Text>
         <BarChart fx:id="SalesChart" categoryGap="2.0" layoutX="225.0" layoutY="20.0" legendVisible="false" prefHeight="292.0" prefWidth="829.0" styleClass="default-color0" stylesheets="@Style.css" title="Top 5 Popular Album">
             <xAxis>
                 <NumberAxis fx:id="yAxis" label="Total Sales" side="BOTTOM" />
@@ -37,20 +37,20 @@
             <yAxis>
                 <CategoryAxis cache="true" prefHeight="201.0" prefWidth="0.0" side="LEFT" fx:id="xAxis" />
             </yAxis>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
         </BarChart>
-      <TextField fx:id="searchTextfield" layoutX="863.0" layoutY="321.0" prefHeight="31.0" prefWidth="219.0" promptText="Enter Album ID" />
-      <ImageView fitHeight="20.0" fitWidth="40.0" layoutX="843.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@search.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="747.0" layoutY="325.0" text="Search Album" textFill="#4a4444">
-         <font>
-            <Font name="System Bold" size="14.666666984558105" />
-         </font>
-      </Label>
+        <TextField fx:id="searchTextfield" layoutX="863.0" layoutY="321.0" prefHeight="31.0" prefWidth="219.0" promptText="Enter Album ID" />
+        <ImageView fitHeight="20.0" fitWidth="40.0" layoutX="843.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@search.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="747.0" layoutY="325.0" text="Search Album" textFill="#4a4444">
+            <font>
+                <Font name="System Bold" size="14.666666984558105" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>
