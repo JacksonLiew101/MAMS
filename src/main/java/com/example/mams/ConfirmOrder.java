@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -92,11 +93,16 @@ public class ConfirmOrder implements Initializable {
     {
         try {
             getCustomerIDLabel();
-            System.out.println(RentalIDLabel.getText());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        if(Objects.equals(RentalIDLabel.getText(), ""))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("No table will be shown.Please obtain the rentalID by filling in the customerID and rental date section.");
+            alert.showAndWait();
+        }
         loadData();
         try {
             getTotalCostLabel();
@@ -113,7 +119,7 @@ public class ConfirmOrder implements Initializable {
     public void getCustomerIDLabel() throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
-        //obtain CARD ID
+        //obtain CUSTOMER ID
         query = "SELECT `CUSTOMER_ID` FROM RENTAL WHERE `RENTAL_ID` = ?";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1,RentalIDLabel.getText());
