@@ -10,6 +10,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -44,6 +45,9 @@ public class SalesReport implements Initializable {
     private TableColumn<SalesReportTableClass, Integer> totalRentedAlbumQuantity_col;
     @FXML
     private TableColumn<SalesReportTableClass, Double> totalSales_col;
+
+    @FXML
+    private TextField searchTextfield;
 
     ObservableList<SalesReportTableClass> oblist = FXCollections.observableArrayList();
 
