@@ -188,16 +188,10 @@ public class CustomerDetails implements Initializable {
                             //view rental detail, top table show rental summary, bottom table show by album, new fxml
 
                             /*
-                            SELECT * FROM RENTAL WHERE CUSTOMER_ID = 10000;
-
-
-SELECT album.ALBUM_ID, album.ALBUM_NAME,  album.ARTIST,
-       album.ALBUM_UNIT_PRICE, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented,
-       SUM(ar.TOTAL_ALBUM_COST) as Total_AMOUNT
-FROM album join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID
-join rental as r on r.RENTAL_ID = ar.RENTAL_ID
-WHERE CUSTOMER_ID = 10000
-GROUP BY ar.ALBUM_ID;
+                            SELECT AR.RENTAL_ID, R.RENTAL_DATE, R.RENTAL_STATUS, AR.QUANTITY_ALBUM_RENTED, A.ALBUM_NAME, AR.TOTAL_ALBUM_COST FROM RENTAL R
+JOIN ALBUM_RENTAL AR ON R.RENTAL_ID = AR.RENTAL_ID
+JOIN ALBUM A ON AR.ALBUM_ID = A.ALBUM_ID
+WHERE CUSTOMER_ID = 10000;
 
 
                             CustomerRentalDetails customerRentalDetails = loader.getController();
