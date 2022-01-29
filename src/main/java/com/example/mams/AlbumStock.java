@@ -60,8 +60,6 @@ public class AlbumStock implements Initializable {
     String query = null;
     Connection connection = null;
     PreparedStatement prepareStatement = null;
-    ResultSet resultSet = null;
-    DatabaseConnection connectNow = new DatabaseConnection();
     MusicAlbum musicAlbum = null;
 
     ObservableList<MusicAlbum> MusicAlbumList = FXCollections.observableArrayList();
@@ -95,16 +93,6 @@ public class AlbumStock implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         refreshData();
-        
-        //value here are referring to the attribute of class MusicAlbum
-        albumID_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumID"));
-        albumName_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("AlbumName"));
-        artist_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Artist"));
-        genre_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Genre"));
-        yearOfRelease_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("YearOfRelease"));
-        quantityOnHand_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("QuantityOnHand"));
-        albumUnitPrice_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumUnitPrice"));
-
 
         //add cell of button edit
         Callback<TableColumn<MusicAlbum, String>, TableCell<MusicAlbum, String>> cellFactory = (TableColumn<MusicAlbum, String> param) -> {
@@ -201,6 +189,15 @@ public class AlbumStock implements Initializable {
 
             return cell;
         };
+
+        //value here are referring to the attribute of class MusicAlbum
+        albumID_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumID"));
+        albumName_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("AlbumName"));
+        artist_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Artist"));
+        genre_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Genre"));
+        yearOfRelease_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("YearOfRelease"));
+        quantityOnHand_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("QuantityOnHand"));
+        albumUnitPrice_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumUnitPrice"));
         button_col.setCellFactory(cellFactory);
         AlbumTable.setItems(MusicAlbumList);
     }

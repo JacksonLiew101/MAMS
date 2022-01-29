@@ -43,7 +43,8 @@ public class AddNewCustomer implements Initializable {
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
     DatabaseConnection connectNow = new DatabaseConnection();
-
+    private boolean update;
+    int customerId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -159,5 +160,28 @@ public class AddNewCustomer implements Initializable {
         else if (result.get() == ButtonType.CANCEL){
             System.out.println("Never!");
         }
+    }
+
+    public void setUpdate(boolean b) {
+        this.update = b;
+    }
+
+    public void setTextField(int customerID, String firstName, String lastName, String email, String phoneNo, int cardID) {
+        customerId = customerID;
+        FirstNameInput.setText(firstName);
+        LastNameInput.setText(lastName);
+        EmailInput.setText(email);
+        PhoneNoInput.setText(phoneNo);
+        CardNumberInput.setText(String.valueOf(cardID));
+        /*
+        CardExpiryYearInput;
+
+        CardExpiryMonthInput;
+
+        CVVInput;
+
+        CardHolderNameInput;
+
+         */
     }
 }

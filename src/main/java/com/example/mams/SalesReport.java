@@ -55,7 +55,7 @@ public class SalesReport implements Initializable {
         } catch (SQLException ignored){
 
         }
-        //value here are referring to the attribute of class MusicAlbum
+        //value here are referring to the attribute of class SalesReportTableClass
         AlbumID_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,Integer>("AlbumID"));
         AlbumName_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,String>("AlbumName"));
         Artist_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,String>("Artist"));

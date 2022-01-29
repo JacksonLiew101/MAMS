@@ -44,7 +44,6 @@ public class AddNewAlbum implements Initializable {
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
     DatabaseConnection connectNow = new DatabaseConnection();
-    MusicAlbum musicAlbum = null;
     private boolean update;
     int albumId;
 
