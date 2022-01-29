@@ -63,14 +63,19 @@ public class CustomerRentalDetails implements Initializable{
     private Label name_label;
 
     @FXML
+    private Label album_label;
+
+    @FXML
+    private Label spending_label;
+
+    @FXML
     private TextField searchTextfield;
 
-    int customerID;
-    String customerName;
     String query = null;
     Connection connection = null;
     PreparedStatement prepareStatement = null;
     RentalDetailsTable rentalDetailsTableClass = null;
+    int customerID;
 
     ObservableList<RentalDetailsTable> rentalDetailsList = FXCollections.observableArrayList();
 
@@ -221,12 +226,46 @@ public class CustomerRentalDetails implements Initializable{
 
     }
 
-    // can change to set customer name and customer ID
-    public void setCustomerDetails(int customerID, String customerName){
+    public void getAlbumNumberLabel() throws SQLException {
+
+        int albumNo = 0;
+        DatabaseConnection connectNow = new DatabaseConnection();
+        connection = connectNow.getConnection();
+
+        //obtain total of album rented
+        query = "SELECT SUM(AR.QUANTITY_ALBUM_RENTED) AS ALBUM_NO FROM RENTAL R JOIN ALBUM_RENTAL AR ON R.RENTAL_ID = AR.RENTAL_ID JOIN ALBUM A ON AR.ALBUM_ID = A.ALBUM_ID "
+                +"WHERE CUSTOMER_ID = "+customerID+";";
+        prepareStatement = connection.prepareStatement(query);
+        ResultSet resultSet = prepareStatement.executeQuery();
+        if(resultSet.next()){
+            albumNo = resultSet.getInt("ALBUM_NO");
+        }
+        album_label.textProperty().bind(Bindings.format("Total Album Rented: %d",albumNo));
+    }
+
+    public void getSpendingLabel() throws SQLException {
+
+        double totalSpending = 0.0;
+        DatabaseConnection connectNow = new DatabaseConnection();
+        connection = connectNow.getConnection();
+
+        //obtain total spending during rental
+        query = "SELECT SUM(AR.TOTAL_ALBUM_COST) AS SPENDING FROM RENTAL R JOIN ALBUM_RENTAL AR ON R.RENTAL_ID = AR.RENTAL_ID JOIN ALBUM A ON AR.ALBUM_ID = A.ALBUM_ID "
+                +"WHERE CUSTOMER_ID = "+customerID+";";
+        prepareStatement = connection.prepareStatement(query);
+        ResultSet resultSet = prepareStatement.executeQuery();
+        if(resultSet.next()){
+            totalSpending = resultSet.getDouble("SPENDING");
+        }
+        spending_label.textProperty().bind(Bindings.format("Total Spending: RM %.2f",totalSpending));
+    }
+
+    public void setCustomerDetails(int customerID, String customerName) throws SQLException {
         this.customerID = customerID;
-        this.customerName = customerName;
 
         name_label.textProperty().bind(Bindings.format("%s's Rental History",customerName));
+        getAlbumNumberLabel();
+        getSpendingLabel();
     }
 
     private void DialogBoxToShowNowIsReturned(){

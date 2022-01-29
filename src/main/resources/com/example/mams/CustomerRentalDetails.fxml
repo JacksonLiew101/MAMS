@@ -38,5 +38,7 @@
          </image>
       </ImageView>
       <TextField fx:id="searchTextfield" layoutX="189.0" layoutY="114.0" prefHeight="21.0" prefWidth="254.0" promptText="Enter Keywords Here" />
+      <Label fx:id="album_label" layoutX="81.0" layoutY="606.0" text="Total Album Rented: " />
+      <Label fx:id="spending_label" layoutX="81.0" layoutY="650.0" text="Total Spending: " />
    </children>
 </AnchorPane>
