@@ -4,6 +4,10 @@
     -fx-border-width: 0px 0px 0px  3px;
 }
 
+.background{
+    -fx-background-color: linear-gradient(#B0BAC9, #ffffff);
+}
+
 .leftPanelBackground{
     -fx-background-color: linear-gradient(#d780c8, #7C17BA);
 }
