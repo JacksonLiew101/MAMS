@@ -4,11 +4,11 @@
 
 ## Features
 A desktop application system that allows the shop owner to:
-- Keep track of available music albums
-- Keep track of rented items
-- Track sales and stock reporting 
-- Keep track of the customer details and the related rental history
-- View the summary of the overall popularity of the music albums
+- Keep track of available music albums.
+- Keep track of rented items.
+- Track sales and stock reporting.
+- Keep track of the customer details and the related rental history.
+- View the summary of the overall popularity of the music albums.
 
 ## Installation
 
@@ -28,9 +28,9 @@ Download them and add them through Project Structure.
 5. Make sure the data are inserted. 
 
 ## Setup of mySQL database before running
-1. Download sql connector jar file in the [official website](https://dev.mysql.com/downloads/connector/j/)
+1. Download sql connector jar file in the [official website](https://dev.mysql.com/downloads/connector/j/).
 
-2. Add the jar file into the project structure
+2. Add the jar file into the project structure.
 
 3. Create a sql file and take a look at the right side bar, and proceed to setup the database connection and select 'mySQL' as connection.
 _[Only works in IntelliJ Ultimate edition]_
