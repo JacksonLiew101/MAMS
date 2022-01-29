@@ -57,6 +57,9 @@ public class ConfirmRentalAlbumQuantity implements Initializable {
     DatabaseConnection connectNow = new DatabaseConnection();
     MusicAlbum musicAlbum = null;
     ObservableList<MusicAlbum> MusicAlbumList = FXCollections.observableArrayList();
+
+    int stockAvailable = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ConfirmButton.setCursor(Cursor.HAND);
@@ -66,13 +69,22 @@ public class ConfirmRentalAlbumQuantity implements Initializable {
     private void ConfirmOrder(ActionEvent event){
         connection = connectNow.getConnection();
         String quantityRentedText = quantityRented.getText();
-
+        stockAvailable = Integer.parseInt(StockAvailableLabel.getText());
+        int quantityRentedNumber = Integer.parseInt(quantityRentedText);
         if(quantityRentedText.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("PLEASE FILL IN ALL DATA");
+            alert.setContentText("Please fill in ALL DATA");
             alert.showAndWait();
+        }
+        else if (quantityRentedNumber < 0 || quantityRentedNumber > stockAvailable)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please make sure quantity rented is between 0 and " + stockAvailable);
+            alert.showAndWait();
+            clean();
         }
         else
         {
