@@ -57,6 +57,8 @@ public class AlbumStock implements Initializable {
     private TableColumn<MusicAlbum, String> button_col;
     @FXML
     private Button music, refreshButton;
+    @FXML
+    private TextField searchTextfield;
 
     String query = null;
     Connection connection = null;
