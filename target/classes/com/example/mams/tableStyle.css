@@ -1,9 +1,9 @@
 .table-view{
-    -fx-background-color: #ffc4d6;
+    -fx-background-color: white;
 }
 
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(to bottom, #D500F9, #FF80AB);
+    -fx-background-color: linear-gradient(to bottom, #9760c0, #d79fca);
     -fx-background-radius: 7px 7px 7px 7px;
     -fx-padding: 0 0 5px 0;
 }
@@ -19,7 +19,7 @@
 
 .table-row-cell:hover {
     -fx-background-color: #93f9b911;
-    -fx-text-background-color: red;
+    -fx-text-background-color: #834db6;
 }
 
 .table-row-cell:odd{
