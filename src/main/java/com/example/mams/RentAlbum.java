@@ -145,7 +145,6 @@ public class RentAlbum implements Initializable {
                                 loader.load();
                             } catch (IOException ignored) {
                             }
-                            // TODO: change AddNewAlbum class to chooseAlbum Class(which i havent created)
                             ConfirmRentalAlbumQuantity confirmRentalAlbumQuantity = loader.getController();
 //                            public void setLabel(String albumIDLabel, String albumNameLabel, String albumUnitPriceLabel,
 //                                    String artistLabel, String genreLabel, String  rentalIDLabel,
@@ -194,10 +193,20 @@ public class RentAlbum implements Initializable {
 
     @FXML
     private void ConfirmOrderPage(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ConfirmOrder.fxml")));
-        Scene scene = new Scene(parent);
+        FXMLLoader loader = new FXMLLoader ();
+        loader.setLocation(getClass().getResource("ConfirmOrder.fxml"));
+        try {
+            loader.load();
+        } catch (IOException ignored) {
+        }
+        //stop here
+        ConfirmOrder ConfirmOrder = loader.getController();
+
+        ConfirmOrder.setRentalLabel(showRentalID.getText());
+        ConfirmOrder.runConfirmOrder();
+        Parent parent = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(scene);
+        stage.setScene(new Scene(parent));
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
     }
@@ -335,6 +344,8 @@ public class RentAlbum implements Initializable {
             }
         } catch(SQLException ignored){}
     }
+
+
 
 
 
