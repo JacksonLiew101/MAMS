@@ -44,14 +44,22 @@ public class AddNewCustomer implements Initializable {
     PreparedStatement preparedStatement;
     DatabaseConnection connectNow = new DatabaseConnection();
     private boolean update;
+    String CreditCardType;
     int customerId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    public boolean isValid(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
+    }
+
     @FXML
     private void addNewCustomer(MouseEvent event){
+
         connection = connectNow.getConnection();
         //customer
         String FirstName = FirstNameInput.getText();
@@ -65,10 +73,11 @@ public class AddNewCustomer implements Initializable {
         String CVVText  =CVVInput.getText();
         String CardHolderName = CardHolderNameInput.getText();
 
-//        int CardNumber=  Integer.parseInt(CardNumberText);
-//        int  CardExpiryYear = Integer.parseInt(CardExpiryYearText);
-//        int CardExpiryMonth =  Integer.parseInt(CardExpiryMonthText);
-//        int  CVV = Integer.parseInt(CVVText);
+        long CardNumber=  Long.parseLong(CardNumberText);
+        System.out.println(CardNumber);
+        int  CardExpiryYear = Integer.parseInt(CardExpiryYearText);
+        int CardExpiryMonth =  Integer.parseInt(CardExpiryMonthText);
+        int  CVV = Integer.parseInt(CVVText);
 
         if(FirstName.isEmpty()|| LastName.isEmpty() ||
                 Email.isEmpty() || PhoneNo.isEmpty() ||
@@ -78,15 +87,75 @@ public class AddNewCustomer implements Initializable {
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("PLEASE FILL IN ALL DATA");
+            alert.setContentText("Please fill in ALL DATA");
             alert.showAndWait();
+        }
+        else if (PhoneNo.length() != 12)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in the country code for the phone no or insert correct phone no");
+            alert.showAndWait();
+            clean();
+        }
+        else if(!isValid(Email))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in correct email format");
+            alert.showAndWait();
+            clean();
+        }
+        else if(!validitychk(CardNumber))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in correct credit/debit card number");
+            alert.showAndWait();
+            clean();
+        }
+        else if(CardExpiryYear < 1000 || CardExpiryYear > 4000)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in correct card expiry year");
+            alert.showAndWait();
+            clean();
+        }
+        else if(CardExpiryMonth < 1 || CardExpiryMonth > 12)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in correct card expiry month");
+            alert.showAndWait();
+            clean();
+        }
+        else if (CVV < 100 || CVV > 999)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in correct CVV");
+            alert.showAndWait();
+            clean();
         }
         else
         {
+            //display the credit card type
+            if(prefixcheck(CardNumber, 4)){
+                CreditCardType = "Visa";
+            }else if(prefixcheck(CardNumber, 5)){
+                CreditCardType = "Master";
+            }else if(prefixcheck(CardNumber, 6)){
+                CreditCardType = "Discover";
+            }else if(prefixcheck(CardNumber, 37)){
+                CreditCardType = "American Express";
+            }else {
+                CreditCardType = "any other types of";
+            }
             getCardQuery();
             insertCard();
             insertCustomer();
-            DialogBoxInAddNewCustomer();
+            DialogBoxInAddNewCustomer(CreditCardType);
             clean();
         }
     }
@@ -145,10 +214,10 @@ public class AddNewCustomer implements Initializable {
         CardHolderNameInput.setText(null);
     }
 
-    private void DialogBoxInAddNewCustomer() {
+    private void DialogBoxInAddNewCustomer(String creditCardType) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("New Customer Added Successfully!");
-        alert.setContentText("The new customer information is added successfully");
+        alert.setContentText("The new customer information is added successfully. Your "+ CreditCardType + " card is accepted.");
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isEmpty()){
@@ -184,4 +253,70 @@ public class AddNewCustomer implements Initializable {
 
          */
     }
+    // valid the credit card number input
+    // Return true if the card number is valid
+    public static boolean validitychk(long cnumber) {
+        return (thesize(cnumber) >= 13 && thesize(cnumber) <= 16) && (prefixmatch(cnumber, 4)
+                || prefixmatch(cnumber, 5) || prefixmatch(cnumber, 37) || prefixmatch(cnumber, 6))
+                && ((sumdoubleeven(cnumber) + sumodd(cnumber)) % 10 == 0);
+    }
+    // Get the result from Step 2
+    public static int sumdoubleeven(long cnumber) {
+        int sum = 0;
+        String num = cnumber + "";
+        for (int i = thesize(cnumber) - 2; i >= 0; i -= 2)
+            sum += getDigit(Integer.parseInt(num.charAt(i) + "") * 2);
+        return sum;
+    }
+    // Return this cnumber if it is a single digit, otherwise,
+    // return the sum of the two digits
+    public static int getDigit(int cnumber) {
+        if (cnumber < 9)
+            return cnumber;
+        return cnumber / 10 + cnumber % 10;
+    }
+    // Return sum of odd-place digits in cnumber
+    public static int sumodd(long cnumber) {
+        int sum = 0;
+        String num = cnumber + "";
+        for (int i = thesize(cnumber) - 1; i >= 0; i -= 2)
+            sum += Integer.parseInt(num.charAt(i) + "");
+        return sum;
+    }
+    // Return true if the digit d is a prefix for cnumber
+    public static boolean prefixmatch(long cnumber, int d) {
+        return getprefx(cnumber, thesize(d)) == d;
+    }
+    // Return the number of digits in d
+    public static int thesize(long d) {
+        String num = d + "";
+        return num.length();
+    }
+    // Return the first k number of digits from
+    // number. If the number of digits in number
+    // is less than k, return number.
+    public static long getprefx(long cnumber, int k) {
+        if (thesize(cnumber) > k) {
+            String num = cnumber + "";
+            return Long.parseLong(num.substring(0, k));
+        }
+        return cnumber;
+    }
+
+    // to check the card type
+    public static int sizecheck(long c_num) {
+        String num = c_num+"";
+        return num.length();
+    }
+    public static long getprefix(long c_num, int k) {
+        if(sizecheck(c_num)>k) {
+            String num = c_num + "";
+            return Long.parseLong(num.substring(0, k));
+        }
+        return c_num;
+    }
+    public static boolean prefixcheck(long c_num, int d) {
+        return getprefix(c_num, sizecheck(d)) == d;
+    }
 }
+

@@ -158,7 +158,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="183.0" style="-fx-background-color: #FF6A59;" text="Clear" textFill="#f2f2f2">
+            <Button mnemonicParsing="false" onMouseClicked="#clear" prefHeight="26.0" prefWidth="183.0" style="-fx-background-color: #FF6A59;" text="Clear" textFill="#f2f2f2">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
