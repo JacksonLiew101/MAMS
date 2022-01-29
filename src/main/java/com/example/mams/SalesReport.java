@@ -2,6 +2,8 @@ package com.example.mams;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
@@ -10,6 +12,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -44,6 +47,9 @@ public class SalesReport implements Initializable {
     private TableColumn<SalesReportTableClass, Integer> totalRentedAlbumQuantity_col;
     @FXML
     private TableColumn<SalesReportTableClass, Double> totalSales_col;
+
+    @FXML
+    private TextField searchTextfield;
 
     ObservableList<SalesReportTableClass> oblist = FXCollections.observableArrayList();
 
@@ -97,6 +103,41 @@ public class SalesReport implements Initializable {
         totalRentedAlbumQuantity_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, Integer>("TotalRentedAlbumQuantity"));
         totalSales_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, Double>("TotalSales"));
         salesReportTable.setItems(oblist);
+
+        //Initializing filtered list
+        FilteredList<SalesReportTableClass> filteredData = new FilteredList<>(oblist, b->true);
+
+        searchTextfield.textProperty().addListener((observable, oldValue, newValue )-> {
+            filteredData.setPredicate(salesReportTable -> {
+
+                // If no search value then display all records or whatever records it current have. no changes.
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    return true;
+                }
+
+                String searchKeyword = newValue.toLowerCase();
+
+                // true means found a match, false means no match found
+                if(String.valueOf(salesReportTable.getAlbumID()).toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (salesReportTable.getAlbumName().toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (salesReportTable.getArtist().toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+
+            SortedList<SalesReportTableClass> sortedData = new SortedList<>(filteredData);
+
+            // Bind sorted result with Table View
+            sortedData.comparatorProperty().bind(salesReportTable.comparatorProperty());
+
+            // Apply filtered and sorted data to the Table View
+            salesReportTable.setItems(sortedData);
+
+        });
 
     }
 

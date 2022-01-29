@@ -1,6 +1,8 @@
 package com.example.mams;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,6 +57,9 @@ public class CustomerDetails implements Initializable {
     private TableColumn<CustomerTable,Integer> CardID;
     @FXML
     private TableColumn<CustomerTable, String> button_col;
+
+    @FXML
+    private TextField searchTextfield;
 
     String query = null;
     Connection connection = null;
@@ -173,8 +178,8 @@ public class CustomerDetails implements Initializable {
                             } catch (IOException ignored) {
                             }
 
-                            //EditCustomer editCustomer = loader.getController();
-                            //editCustomer.setTextField(customerTable.getCustomerID(), customerTable.getFirstName(), customerTable.getLastName(), customerTable.getEmail(),customerTable.getPhoneNo(), customerTable.getCardID());
+                            EditCustomer editCustomer = loader.getController();
+                            editCustomer.setTextField(customerTable.getCustomerID(), customerTable.getFirstName(), customerTable.getLastName(), customerTable.getEmail(),customerTable.getPhoneNo(), customerTable.getCardID());
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
@@ -232,6 +237,48 @@ public class CustomerDetails implements Initializable {
         CardID.setCellValueFactory(new PropertyValueFactory<CustomerTable,Integer>("CardID"));
         button_col.setCellFactory(cellFactory);
         CustomerTable.setItems(CustomerList);
+
+        //Initializing filtered list
+        FilteredList<CustomerTable> filteredData = new FilteredList<>(CustomerList, b->true);
+
+        searchTextfield.textProperty().addListener((observable, oldValue, newValue )-> {
+            filteredData.setPredicate(customerTable -> {
+
+                // If no search value then display all records or whatever records it current have. no changes.
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    return true;
+                }
+
+                String searchKeyword = newValue.toLowerCase();
+
+                // true means found a match, false means no match found
+                if(String.valueOf(customerTable.getCustomerID()).toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (customerTable.getFirstName().toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (customerTable.getLastName().toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (customerTable.getEmail().toLowerCase().indexOf(searchKeyword) > -1) {
+                    return true;
+                }else if (customerTable.getPhoneNo().toLowerCase().indexOf(searchKeyword) > -1) {
+                    return true;
+                }else if (String.valueOf(customerTable.getCardID()).toLowerCase().indexOf(searchKeyword) > -1) {
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+
+            SortedList<CustomerTable> sortedData = new SortedList<>(filteredData);
+
+            // Bind sorted result with Table View
+            sortedData.comparatorProperty().bind(CustomerTable.comparatorProperty());
+
+            // Apply filtered and sorted data to the Table View
+            CustomerTable.setItems(sortedData);
+
+        });
+
     }
 
     @FXML
