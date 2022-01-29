@@ -25,7 +25,7 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Text>
-      <TableView fx:id="ConfirmOrderTable" layoutX="32.0" layoutY="117.0" prefHeight="342.0" prefWidth="930.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
+      <TableView fx:id="ConfirmOrderTable" layoutX="32.0" layoutY="117.0" prefHeight="342.0" prefWidth="930.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
         <columns>
           <TableColumn fx:id="AlbumName_col" prefWidth="325.0" text="Album Name" />
           <TableColumn fx:id="QuantityRented_col" prefWidth="189.0" text="Quantity Rented" />
@@ -34,14 +34,14 @@
             <TableColumn fx:id="rentalStatus_col" prefWidth="140.0" text="Rental Status" />
         </columns>
       </TableView>
-      <Button fx:id="ConfirmButton" layoutX="497.0" layoutY="522.0" mnemonicParsing="false" onAction="#ConfirmMessage" prefHeight="17.0" prefWidth="75.0" style="-fx-background-color: #34D999;" text="Confirm" textFill="WHITE">
+      <Button fx:id="ConfirmButton" layoutX="497.0" layoutY="534.0" mnemonicParsing="false" onAction="#ConfirmMessage" prefHeight="17.0" prefWidth="75.0" style="-fx-background-color: #34D999;" text="Confirm" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect></Button>
       <Text layoutX="32.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental ID :" wrappingWidth="59.0" />
       <Label fx:id="RentalIDLabel" layoutX="102.0" layoutY="113.0" text="RentalIDLabel" underline="true" />
-      <Label fx:id="TotalCostLabel" layoutX="957.0" layoutY="465.0" text="TotalCostLabel" underline="true" />
-      <Text layoutX="850.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Cost(RM) :" wrappingWidth="91.0" />
+      <Label fx:id="TotalCostLabel" layoutX="957.0" layoutY="488.0" text="TotalCostLabel" underline="true" />
+      <Text layoutX="849.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Cost(RM) :" wrappingWidth="91.0" />
       <Text layoutX="251.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID : " />
       <Label fx:id="CustomerIDLabel" layoutX="343.0" layoutY="113.0" text="CustomerIDLabel" underline="true" />
    </children>
