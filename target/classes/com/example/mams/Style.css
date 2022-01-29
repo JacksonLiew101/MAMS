@@ -7,3 +7,7 @@
 .leftPanelBackground{
     -fx-background-color: linear-gradient(#d780c8, #7C17BA);
 }
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #d780c8;
+}

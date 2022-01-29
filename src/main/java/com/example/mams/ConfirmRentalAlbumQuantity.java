@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.action.Action;
@@ -58,7 +59,7 @@ public class ConfirmRentalAlbumQuantity implements Initializable {
     ObservableList<MusicAlbum> MusicAlbumList = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ConfirmButton.setCursor(Cursor.HAND);
     }
 
     @FXML

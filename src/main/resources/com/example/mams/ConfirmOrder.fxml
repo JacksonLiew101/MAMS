@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="1087.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.ConfirmOrder">
    <children>
       <Text layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Order" />
@@ -21,7 +20,7 @@
             <TableColumn fx:id="rentalStatus_col" prefWidth="132.7999267578125" text="Rental Status" />
         </columns>
       </TableView>
-      <Button fx:id="ConfirmButton" layoutX="467.0" layoutY="548.0" mnemonicParsing="false" text="Confirm" />
+      <Button fx:id="ConfirmButton" layoutX="467.0" layoutY="548.0" mnemonicParsing="false" onAction="#ConfirmMessage" text="Confirm" />
       <Text layoutX="40.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental ID" />
       <Label fx:id="RentalIDLabel" layoutX="102.0" layoutY="66.0" text="RentalIDLabel" />
       <Label fx:id="TotalCostLabel" layoutX="920.0" layoutY="472.0" text="TotalCostLabel" />
