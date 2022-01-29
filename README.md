@@ -40,6 +40,8 @@ And setup the initial connection as the article below.
 https://stackoverflow.com/questions/55598914/connect-mysql-to-java-via-intellij-idea
 _[Works in IntelliJ Community edition]_
 
+5. Go to src folder and open DatabaseConnection.jar. Look for databaseUser and databasePassword and change to your own credentials.
+
 ## _Special Note on Implementation_
 
 | Item | Description |
