@@ -178,8 +178,8 @@ public class CustomerDetails implements Initializable {
                             } catch (IOException ignored) {
                             }
 
-                            //EditCustomer editCustomer = loader.getController();
-                            //editCustomer.setTextField(customerTable.getCustomerID(), customerTable.getFirstName(), customerTable.getLastName(), customerTable.getEmail(),customerTable.getPhoneNo(), customerTable.getCardID());
+                            EditCustomer editCustomer = loader.getController();
+                            editCustomer.setTextField(customerTable.getCustomerID(), customerTable.getFirstName(), customerTable.getLastName(), customerTable.getEmail(),customerTable.getPhoneNo(), customerTable.getCardID());
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
@@ -250,8 +250,6 @@ public class CustomerDetails implements Initializable {
                 }
 
                 String searchKeyword = newValue.toLowerCase();
-
-                //int customerID, String firstName, String lastName,String email, String phoneNo, int cardID
 
                 // true means found a match, false means no match found
                 if(String.valueOf(customerTable.getCustomerID()).toLowerCase().indexOf(searchKeyword) > -1){
