@@ -38,11 +38,11 @@
          </image>
       </ImageView>
       <TextField fx:id="searchTextfield" layoutX="596.0" layoutY="127.0" prefHeight="21.0" prefWidth="254.0" promptText="Enter Keywords Here" style="-fx-background-color: F5F5F5;" />
-      <Label fx:id="album_label" layoutX="50.0" layoutY="448.0" prefHeight="27.0" prefWidth="179.0" text="Total Album Rented : ">
+      <Label fx:id="album_label" layoutX="50.0" layoutY="448.0" prefHeight="27.0" prefWidth="295.0" text="Total Album Rented : ">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="spending_label" layoutX="50.0" layoutY="494.0" prefHeight="27.0" prefWidth="192.0" text="Total Spending         : ">
+      <Label fx:id="spending_label" layoutX="50.0" layoutY="494.0" prefHeight="27.0" prefWidth="295.0" text="Total Spending         : ">
          <font>
             <Font size="18.0" />
          </font></Label>
