@@ -120,28 +120,34 @@ public class RentAlbum implements Initializable {
 
 
                         addIcon.setOnMouseClicked((MouseEvent event) -> {
-
-                            DialogBoxToShowNowIsEditData();
-                            musicAlbum = AlbumTable.getSelectionModel().getSelectedItem();
-                            FXMLLoader loader = new FXMLLoader ();
-                            loader.setLocation(getClass().getResource("ConfirmRentalAlbumQuantity.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException ignored) {
+                            if(Objects.equals(showRentalID.getText(), ""))
+                            {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setHeaderText(null);
+                                alert.setContentText("Rental ID is not detected. Please obtain it by filling in customer ID and rental date");
+                                alert.showAndWait();
                             }
-                            ConfirmRentalAlbumQuantity confirmRentalAlbumQuantity = loader.getController();
-//                            public void setLabel(String albumIDLabel, String albumNameLabel, String albumUnitPriceLabel,
-//                                    String artistLabel, String genreLabel, String  rentalIDLabel,
-//                                    String stockAvailableLabel, String yearOfReleaseLabel)
-                            confirmRentalAlbumQuantity.setLabel(String.valueOf(musicAlbum.getAlbumID()), musicAlbum.getAlbumName(),
-                                    String.valueOf(musicAlbum.getAlbumUnitPrice()), musicAlbum.getArtist(),
-                                    musicAlbum.getGenre(), showRentalID.getText(),
-                                    String.valueOf(musicAlbum.getQuantityOnHand()), String.valueOf(musicAlbum.getYearOfRelease()) );
-                            Parent parent = loader.getRoot();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(parent));
-                            stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
+                            else {
+                                clearDialogBoxToShowNowIsRentingAlbum();
+                                musicAlbum = AlbumTable.getSelectionModel().getSelectedItem();
+                                FXMLLoader loader = new FXMLLoader ();
+                                loader.setLocation(getClass().getResource("ConfirmRentalAlbumQuantity.fxml"));
+                                try {
+                                    loader.load();
+                                } catch (IOException ignored) {
+                                }
+                                ConfirmRentalAlbumQuantity confirmRentalAlbumQuantity = loader.getController();
+                                confirmRentalAlbumQuantity.setLabel(String.valueOf(musicAlbum.getAlbumID()), musicAlbum.getAlbumName(),
+                                        String.valueOf(musicAlbum.getAlbumUnitPrice()), musicAlbum.getArtist(),
+                                        musicAlbum.getGenre(), showRentalID.getText(),
+                                        String.valueOf(musicAlbum.getQuantityOnHand()), String.valueOf(musicAlbum.getYearOfRelease()) );
+                                Parent parent = loader.getRoot();
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(parent));
+                                stage.initStyle(StageStyle.UTILITY);
+                                stage.show();
+                            }
+
                         });
 
                         HBox manageBtn = new HBox(addIcon);
@@ -249,7 +255,7 @@ public class RentAlbum implements Initializable {
     }
 
 
-    private void DialogBoxToShowNowIsEditData(){
+    private void clearDialogBoxToShowNowIsRentingAlbum(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Rental Album");
         alert.setContentText("You are renting album");
@@ -273,12 +279,25 @@ public class RentAlbum implements Initializable {
         connection = connectNow.getConnection();
         String customerID = CustomerIDInput.getText();
         String RentalDate = String.valueOf(RentalDateInput.getValue());
-        int customerID_Int = Integer.parseInt(customerID);
+        int customerID_Int = 0;
+        try {
+            customerID_Int = Integer.parseInt(customerID);
+        }
+        catch (NumberFormatException e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please make sure the customerID is an integer");
+            alert.showAndWait();
+            clear();
+        }
+
+
         if(customerID.isEmpty()|| RentalDate.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("PLEASE FILL IN ALL DATA");
+            alert.setContentText("Please fill in ALL DATA");
             alert.showAndWait();
         }
         else if(customerID_Int  < minCustomerID || customerID_Int > maxCustomerID)
@@ -287,12 +306,12 @@ public class RentAlbum implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Please make sure customer ID is within "+minCustomerID + " and " + maxCustomerID );
             alert.showAndWait();
+            clear();
         }
         else {
             getQuery();
             insert();
             DialogBoxInAddNewRental();
-            System.out.println(this.LatestRentalID);
             showRentalID.setText(getLatestRentalID());
             clear();
         }
@@ -394,9 +413,7 @@ public class RentAlbum implements Initializable {
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1,showRentalID.getText());
         preparedStatement.executeUpdate();
-//        query = "DELETE RENTAL WHERE `RENTAL_ID` = ?";
-//        preparedStatement.setString(1,showRentalID.getText());
-//        resultSet = preparedStatement.executeQuery();
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Your order is canceled!");
         alert.setContentText("Your order is canceled. You may close the window and make new order.");
@@ -411,7 +428,6 @@ public class RentAlbum implements Initializable {
         else if (result.get() == ButtonType.CANCEL){
             System.out.println("Never!");
         }
-        System.out.println(query);
         showRentalID.setText(null);
         clear();
     }

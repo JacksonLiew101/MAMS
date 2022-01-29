@@ -63,6 +63,15 @@ public class ConfirmRentalAlbumQuantity implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ConfirmButton.setCursor(Cursor.HAND);
+        stockAvailable = Integer.parseInt(StockAvailableLabel.getText());
+        System.out.println(stockAvailable);
+        if (stockAvailable < 1)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Out of stock, please choose another album");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -70,13 +79,33 @@ public class ConfirmRentalAlbumQuantity implements Initializable {
         connection = connectNow.getConnection();
         String quantityRentedText = quantityRented.getText();
         stockAvailable = Integer.parseInt(StockAvailableLabel.getText());
-        int quantityRentedNumber = Integer.parseInt(quantityRentedText);
+        int quantityRentedNumber = 0;
+        try {
+            quantityRentedNumber = Integer.parseInt(quantityRentedText);
+        }
+        catch (NumberFormatException e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("The rented quantity is empty");
+            alert.showAndWait();
+            clean();
+        }
         if(quantityRentedText.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please fill in ALL DATA");
             alert.showAndWait();
+            clean();
+        }
+        else if (stockAvailable < 1)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Out of stock, please choose another album");
+            alert.showAndWait();
+            clean();
         }
         else if (quantityRentedNumber < 0 || quantityRentedNumber > stockAvailable)
         {
