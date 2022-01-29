@@ -140,12 +140,12 @@ public class Dashboard implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         //obtain total albums available
-        query = "SELECT SUM(QUANTITY_ON_HAND) AS SUM_QUANTITY from ALBUM";
+        query = "SELECT COUNT(ALBUM_ID) AS SUM_ALBUM from ALBUM";
         preparedStatement = connection.prepareStatement(query);
         resultSet = preparedStatement.executeQuery();
         int TotalAlbum = 0;
         if(resultSet.next()){
-            TotalAlbum = resultSet.getInt("SUM_QUANTITY");
+            TotalAlbum = resultSet.getInt("SUM_ALBUM");
         }
         totalAlbum_label.setText(Integer.toString(TotalAlbum));
     }
