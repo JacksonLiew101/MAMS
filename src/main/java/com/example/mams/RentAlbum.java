@@ -273,12 +273,25 @@ public class RentAlbum implements Initializable {
         connection = connectNow.getConnection();
         String customerID = CustomerIDInput.getText();
         String RentalDate = String.valueOf(RentalDateInput.getValue());
-        int customerID_Int = Integer.parseInt(customerID);
+        int customerID_Int = 0;
+        try {
+            customerID_Int = Integer.parseInt(customerID);
+        }
+        catch (NumberFormatException e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please make sure the customerID is an integer");
+            alert.showAndWait();
+            clear();
+        }
+
+
         if(customerID.isEmpty()|| RentalDate.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("PLEASE FILL IN ALL DATA");
+            alert.setContentText("Please fill in ALL DATA");
             alert.showAndWait();
         }
         else if(customerID_Int  < minCustomerID || customerID_Int > maxCustomerID)
@@ -287,6 +300,7 @@ public class RentAlbum implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Please make sure customer ID is within "+minCustomerID + " and " + maxCustomerID );
             alert.showAndWait();
+            clear();
         }
         else {
             getQuery();
