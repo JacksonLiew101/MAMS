@@ -184,32 +184,22 @@ public class CustomerDetails implements Initializable {
 
                         });
                         detailIcon.setOnMouseClicked((MouseEvent event) -> {
-
-                            //view rental detail, top table show rental summary, bottom table show by album, new fxml
-
-                            /*
-                            SELECT * FROM RENTAL WHERE CUSTOMER_ID = 10000;
-
-
-SELECT album.ALBUM_ID, album.ALBUM_NAME,  album.ARTIST,
-       album.ALBUM_UNIT_PRICE, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented,
-       SUM(ar.TOTAL_ALBUM_COST) as Total_AMOUNT
-FROM album join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID
-join rental as r on r.RENTAL_ID = ar.RENTAL_ID
-WHERE CUSTOMER_ID = 10000
-GROUP BY ar.ALBUM_ID;
-
+                            customerTable = CustomerTable.getSelectionModel().getSelectedItem();
+                            FXMLLoader loader = new FXMLLoader ();
+                            loader.setLocation(getClass().getResource("CustomerRentalDetails.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException ignored) {
+                            }
 
                             CustomerRentalDetails customerRentalDetails = loader.getController();
+                            customerRentalDetails.setCustomerDetails(customerTable.getCustomerID(), customerTable.getFirstName());
+                            customerRentalDetails.loadData();
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
                             stage.initStyle(StageStyle.UTILITY);
                             stage.show();
-                             */
-
-
-
                         });
 
                         HBox manageBtn = new HBox(editIcon, deleteIcon, detailIcon);
