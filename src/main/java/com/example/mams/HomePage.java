@@ -5,8 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -26,14 +28,16 @@ public class HomePage implements Initializable {
 
     @FXML
     private ImageView exit;
-
+    @FXML
+    private Button exitButton,dashboardButton, AlbumStockButton,SalesReportButton,CustomerDetailsButton,RentAlbumButton;
     @FXML
     private StackPane contentArea;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        exit.setOnMouseClicked(event -> System.exit(0));
+        exitButton.setOnMouseClicked(event -> System.exit(0));
+        exitButton.setCursor(Cursor.HAND);
 
         try {
             Parent fxml = FXMLLoader.load(getClass().getResource("dashboard.fxml"));

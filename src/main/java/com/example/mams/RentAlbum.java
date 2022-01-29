@@ -69,6 +69,10 @@ public class RentAlbum implements Initializable {
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
     String LatestRentalID = null;
+
+    //get the max and min number of customer ID
+    int minCustomerID = 0;
+    int maxCustomerID = 0;
     // until here for inputting the new rental order
     @FXML
     private Label showRentalID;
@@ -215,6 +219,11 @@ public class RentAlbum implements Initializable {
         cancelButton.setCursor(Cursor.HAND);
         refreshButton.setCursor(Cursor.HAND);
         loadData();
+        try {
+            getMinAndMaxCustomerID();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -264,11 +273,19 @@ public class RentAlbum implements Initializable {
         connection = connectNow.getConnection();
         String customerID = CustomerIDInput.getText();
         String RentalDate = String.valueOf(RentalDateInput.getValue());
+        int customerID_Int = Integer.parseInt(customerID);
         if(customerID.isEmpty()|| RentalDate.isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("PLEASE FILL IN ALL DATA");
+            alert.showAndWait();
+        }
+        else if(customerID_Int  < minCustomerID || customerID_Int > maxCustomerID)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please make sure customer ID is within "+minCustomerID + " and " + maxCustomerID );
             alert.showAndWait();
         }
         else {
@@ -399,4 +416,23 @@ public class RentAlbum implements Initializable {
         clear();
     }
 
+    //method for getting the min and max customer ID
+    private void getMinAndMaxCustomerID() throws SQLException {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        connection = connectNow.getConnection();
+        //obtain min customer_ID
+        query = "SELECT MIN(CUSTOMER_ID) AS LOWEST FROM CUSTOMER";
+        preparedStatement = connection.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            minCustomerID = resultSet.getInt("LOWEST");
+        }
+        //obtain max customer_ID
+        query = "SELECT MAX(CUSTOMER_ID) AS HIGHEST FROM customer;";
+        preparedStatement = connection.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            maxCustomerID = resultSet.getInt("HIGHEST");
+        }
+    }
 }
