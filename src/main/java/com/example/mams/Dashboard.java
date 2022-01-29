@@ -134,22 +134,20 @@ public class Dashboard implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Hello");
     }
     @FXML
     private void getTotalAlbumLabel() throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         //obtain total albums available
-        query = "SELECT SUM(QUANTITY_ON_HAND) AS SUM_QUANTITY from ALBUM";
+        query = "SELECT COUNT(ALBUM_ID) AS SUM_ALBUM from ALBUM";
         preparedStatement = connection.prepareStatement(query);
         resultSet = preparedStatement.executeQuery();
         int TotalAlbum = 0;
         if(resultSet.next()){
-            TotalAlbum = resultSet.getInt("SUM_QUANTITY");
+            TotalAlbum = resultSet.getInt("SUM_ALBUM");
         }
         totalAlbum_label.setText(Integer.toString(TotalAlbum));
-        System.out.println(TotalAlbum);
     }
     @FXML
     private void getTotalCustomerLabel() throws SQLException {
@@ -164,7 +162,6 @@ public class Dashboard implements Initializable {
             TotalCustomer = resultSet.getInt("SUM_CUSTOMER");
         }
         totalCustomer_label.setText(Integer.toString(TotalCustomer));
-        System.out.println(TotalCustomer);
     }
 }
 
