@@ -61,9 +61,9 @@ public class AddNewAlbum implements Initializable {
         String YearOfReleaseText = YearOfReleaseInput.getText();
         String AlbumQuantityText  =AlbumQuantityInput.getText();
         String AlbumUnitPriceText = AlbumUnitPriceInput.getText();
-        //        int YearOfRelease =  Integer.parseInt(YearOfReleaseText);
-//        int  AlbumQuantity = Integer.parseInt(AlbumQuantityText);
-//        double AlbumUnitPrice = Double.parseDouble(AlbumUnitPriceText);
+        int YearOfRelease =  Integer.parseInt(YearOfReleaseText);
+        int  AlbumQuantity = Integer.parseInt(AlbumQuantityText);
+        double AlbumUnitPrice = Double.parseDouble(AlbumUnitPriceText);
 
         if(AlbumName.isEmpty()|| Artist.isEmpty() ||
                 Genre.isEmpty() || YearOfReleaseText.isEmpty() ||
@@ -71,15 +71,40 @@ public class AddNewAlbum implements Initializable {
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("PLEASE FILL IN ALL DATA");
+            alert.setContentText("Please fill in ALL DATA");
             alert.showAndWait();
+        }
+        //check year
+        else if(YearOfRelease < 1000 || YearOfRelease > 3000)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please make sure year of release is valid");
+            alert.showAndWait();
+            clear();
+        }
+        else if (AlbumQuantity <1)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please make sure album quantity is more than or equals to 1");
+            alert.showAndWait();
+            clear();
+        }
+        else if(AlbumUnitPrice < 0)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please make sure album unit price is more than 0");
+            alert.showAndWait();
+            clear();
         }
         else
         {
             getQuery();
             insert();
             DialogBoxInAddNewAlbum();
-            clean();
+            clear();
         }
     }
 
@@ -112,7 +137,7 @@ public class AddNewAlbum implements Initializable {
     }
 
     @FXML
-    private void clean(){
+    private void clear(){
        AlbumNameInput.setText(null);
        ArtistInput.setText(null);
        GenreInput.setText(null);
