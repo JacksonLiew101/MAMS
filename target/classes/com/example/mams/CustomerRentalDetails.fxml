@@ -22,7 +22,7 @@
             <TableColumn fx:id="return_col" prefWidth="124.0" text="Return" />
         </columns>
       </TableView>
-      <Label fx:id="name_label" layoutX="53.0" layoutY="51.0" prefHeight="45.0" prefWidth="694.0">
+      <Label fx:id="name_label" layoutX="50.0" layoutY="108.0" prefHeight="45.0" prefWidth="433.0">
          <font>
             <Font name="System Bold Italic" size="30.0" />
          </font>
@@ -38,7 +38,13 @@
          </image>
       </ImageView>
       <TextField fx:id="searchTextfield" layoutX="596.0" layoutY="127.0" prefHeight="21.0" prefWidth="254.0" promptText="Enter Keywords Here" style="-fx-background-color: F5F5F5;" />
-      <Label fx:id="album_label" layoutX="81.0" layoutY="606.0" text="Total Album Rented: " />
-      <Label fx:id="spending_label" layoutX="81.0" layoutY="650.0" text="Total Spending: " />
+      <Label fx:id="album_label" layoutX="50.0" layoutY="586.0" prefHeight="27.0" prefWidth="179.0" text="Total Album Rented : ">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="spending_label" layoutX="50.0" layoutY="633.0" prefHeight="27.0" prefWidth="192.0" text="Total Spending         : ">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>
