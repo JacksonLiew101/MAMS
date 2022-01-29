@@ -1,11 +1,18 @@
 package com.example.mams;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,6 +33,11 @@ public class Login implements Initializable {
 
     String Email;
     String Password;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    private double xOffset = 0;
+    private double yOffset = 0;
     //    default Email and Password
     //    Email : mams@gmail.com
     //    Password: cat201
@@ -36,8 +48,7 @@ public class Login implements Initializable {
     }
 
     @FXML
-    public void goToHomePage (ActionEvent event)
-    {
+    public void goToHomePage (ActionEvent event) throws IOException {
         Email = EmailInput.getText();
         Password = passwordInput.getText();
 
@@ -88,7 +99,7 @@ public class Login implements Initializable {
             else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle(null);
-                alert.setContentText("Congratulations");
+                alert.setContentText("Welcome to MAMS!");
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isEmpty()) {
                     System.out.println("Alert closed");
@@ -97,7 +108,19 @@ public class Login implements Initializable {
                 } else if (result.get() == ButtonType.CANCEL) {
                     System.out.println("Never!");
                 }
-
+                Parent root = FXMLLoader.load(getClass().getResource("homePage.fxml"));
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                root.setOnMousePressed(events -> {
+                    xOffset = events.getSceneX();
+                    yOffset = events.getSceneY();
+                });
+                root.setOnMouseDragged(events -> {
+                    stage.setX(events.getScreenX() - xOffset);
+                    stage.setY(events.getScreenY() - yOffset);
+                });
+                stage.setScene(scene);
+                stage.show();
             }
         }
 
