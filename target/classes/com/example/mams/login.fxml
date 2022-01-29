@@ -58,7 +58,7 @@
                   <Image url="@unlock.png" />
                </image>
             </ImageView>
-            <Button fx:id="button2" layoutX="390.0" layoutY="400.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="63.0" prefWidth="194.0" style="-fx-background-color: E419C4; -fx-background-color: 7C17BA;" text="Button" textFill="WHITE" />
+            <Button fx:id="button2" layoutX="390.0" layoutY="400.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="63.0" prefWidth="194.0" style="-fx-background-color: E419C4; -fx-background-color: 7C17BA;" text="Login" textFill="WHITE" />
             <Text layoutX="356.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back,">
                <font>
                   <Font name="System Bold" size="43.0" />
