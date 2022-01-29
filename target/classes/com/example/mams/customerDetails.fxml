@@ -28,8 +28,8 @@
          <font>
             <Font name="Roboto" size="64.0" />
          </font></Text>
-      <Button fx:id="AddCustomer" layoutX="993.0" layoutY="101.0" mnemonicParsing="false" onAction="#AddNewCustomer" style="-fx-background-color: transparent;" />
-      <Button fx:id="RefreshButton" layoutX="993.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#refreshTable" prefHeight="20.0" prefWidth="16.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="AddCustomer" layoutX="852.0" layoutY="94.0" mnemonicParsing="false" onAction="#AddNewCustomer" prefHeight="40.0" prefWidth="46.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="RefreshButton" layoutX="993.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#refreshTable" prefHeight="54.0" prefWidth="20.0" style="-fx-background-color: transparent;" />
       <Label layoutX="33.0" layoutY="140.0" text="Search">
          <font>
             <Font name="System Bold" size="14.666666984558105" />
