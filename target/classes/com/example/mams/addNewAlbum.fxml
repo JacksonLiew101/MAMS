@@ -15,7 +15,7 @@
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #757575;">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Album Details" textAlignment="CENTER">
+            <Text fill="MINTCREAM" strokeType="OUTSIDE" strokeWidth="0.0" text="Album Details" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="47.0" />
                </font>
@@ -25,7 +25,7 @@
             </Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="900.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="900.0" style="-fx-background-color: #FFFAF0;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name" wrappingWidth="82.93676567077637">
                <HBox.margin>
@@ -44,7 +44,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="51.0" prefWidth="900.0">
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="51.0" prefWidth="900.0" style="-fx-background-color: #FFFAF0;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Artist" wrappingWidth="82.93676567077637">
                <HBox.margin>
@@ -63,7 +63,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="161.0" prefHeight="51.0" prefWidth="900.0">
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="161.0" prefHeight="51.0" prefWidth="900.0" style="-fx-background-color: #FFFAF0;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Genre" wrappingWidth="83.93676567077637">
                <HBox.margin>
@@ -82,7 +82,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="212.0" prefHeight="51.0" prefWidth="900.0">
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="212.0" prefHeight="51.0" prefWidth="900.0" style="-fx-background-color: #FFFAF0;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Year of Release" wrappingWidth="80.93676567077637">
                <HBox.margin>
@@ -101,7 +101,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="264.0" prefHeight="51.0" prefWidth="900.0">
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="264.0" prefHeight="51.0" prefWidth="900.0" style="-fx-background-color: #FFFAF0;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" wrappingWidth="70.93676567077637">
                <HBox.margin>
@@ -123,7 +123,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="315.0" prefHeight="51.0" prefWidth="900.0">
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="315.0" prefHeight="51.0" prefWidth="900.0" style="-fx-background-color: #FFFAF0;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Album Unit Price" wrappingWidth="83.93676567077637">
                <HBox.margin>
@@ -145,7 +145,7 @@
             <Insets bottom="10.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="67.0" prefWidth="640.0">
+      <HBox alignment="CENTER" prefHeight="67.0" prefWidth="640.0" style="-fx-background-color: #FFFAF0;">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="44.0" prefWidth="207.0" style="-fx-background-color: #34D999;" text="Insert/Update" textFill="WHITE">
                <HBox.margin>

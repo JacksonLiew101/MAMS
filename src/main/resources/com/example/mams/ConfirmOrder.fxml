@@ -4,28 +4,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="1087.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.ConfirmOrder">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1086.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.ConfirmOrder">
    <children>
-      <Text layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Order" />
-      <Text layoutX="32.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is your order:" />
-      <TableView fx:id="ConfirmOrderTable" layoutX="32.0" layoutY="117.0" prefHeight="342.0" prefWidth="930.0">
+      <HBox alignment="TOP_CENTER" prefHeight="62.0" prefWidth="1086.0" style="-fx-background-color: #757575;">
+         <children>
+            <Text fill="MINTCREAM" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Order">
+               <font>
+                  <Font name="System Bold Italic" size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Text layoutX="32.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here is your order :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Text>
+      <TableView fx:id="ConfirmOrderTable" layoutX="32.0" layoutY="117.0" prefHeight="342.0" prefWidth="930.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="150.0">
         <columns>
-          <TableColumn fx:id="AlbumName_col" prefWidth="372.8000602722168" text="Album Name" />
-          <TableColumn fx:id="QuantityRented_col" prefWidth="124.0" text="Quantity Rented" />
-            <TableColumn fx:id="AlbumUnitPriceWhenRented_col" prefWidth="183.2000732421875" text="Album Unit Price When Rented" />
-            <TableColumn fx:id="TotalCostAlbum_col" prefWidth="119.19987487792969" text="Total Cost Album" />
-            <TableColumn fx:id="rentalStatus_col" prefWidth="132.7999267578125" text="Rental Status" />
+          <TableColumn fx:id="AlbumName_col" prefWidth="325.0" text="Album Name" />
+          <TableColumn fx:id="QuantityRented_col" prefWidth="189.0" text="Quantity Rented" />
+            <TableColumn fx:id="AlbumUnitPriceWhenRented_col" prefWidth="207.0" text="Album Unit Price When Rented" />
+            <TableColumn fx:id="TotalCostAlbum_col" prefWidth="142.0" text="Total Cost Album" />
+            <TableColumn fx:id="rentalStatus_col" prefWidth="140.0" text="Rental Status" />
         </columns>
       </TableView>
-      <Button fx:id="ConfirmButton" layoutX="467.0" layoutY="548.0" mnemonicParsing="false" onAction="#ConfirmMessage" text="Confirm" />
-      <Text layoutX="40.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental ID" />
-      <Label fx:id="RentalIDLabel" layoutX="102.0" layoutY="66.0" text="RentalIDLabel" />
-      <Label fx:id="TotalCostLabel" layoutX="920.0" layoutY="472.0" text="TotalCostLabel" />
-      <Text layoutX="830.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Cost(RM):" />
-      <Text layoutX="187.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" />
-      <Label fx:id="CustomerIDLabel" layoutX="266.0" layoutY="66.0" text="CustomerIDLabel" />
+      <Button fx:id="ConfirmButton" layoutX="497.0" layoutY="534.0" mnemonicParsing="false" onAction="#ConfirmMessage" prefHeight="17.0" prefWidth="75.0" style="-fx-background-color: #34D999;" text="Confirm" textFill="WHITE">
+         <effect>
+            <DropShadow />
+         </effect></Button>
+      <Text layoutX="32.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental ID :" wrappingWidth="59.0" />
+      <Label fx:id="RentalIDLabel" layoutX="102.0" layoutY="113.0" text="RentalIDLabel" underline="true" />
+      <Label fx:id="TotalCostLabel" layoutX="957.0" layoutY="488.0" text="TotalCostLabel" underline="true" />
+      <Text layoutX="849.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Cost(RM) :" wrappingWidth="91.0" />
+      <Text layoutX="251.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID : " />
+      <Label fx:id="CustomerIDLabel" layoutX="343.0" layoutY="113.0" text="CustomerIDLabel" underline="true" />
    </children>
 </AnchorPane>
