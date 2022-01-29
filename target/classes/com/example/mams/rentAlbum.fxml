@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1178.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.RentAlbum">
    <children>
       <HBox prefHeight="49.0" prefWidth="1280.0">
@@ -54,7 +53,7 @@
             </Text>
          </children>
       </HBox>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css">
          <children>
             <TableView fx:id="AlbumTable" layoutX="6.0" prefHeight="391.0" prefWidth="1133.0">
               <columns>

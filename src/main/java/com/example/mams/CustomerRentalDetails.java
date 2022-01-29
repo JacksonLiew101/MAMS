@@ -1,11 +1,13 @@
 package com.example.mams;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -41,9 +43,13 @@ public class CustomerRentalDetails implements Initializable{
     private TableColumn<RentalDetailsTable, Double> totalCost_col;
 
     @FXML
+    private Label name_label;
+
+    @FXML
     private TextField searchTextfield;
 
     int customerID;
+    String customerName;
 
     ObservableList<RentalDetailsTable> rentalDetailsList = FXCollections.observableArrayList();
 
@@ -128,6 +134,14 @@ public class CustomerRentalDetails implements Initializable{
     }
 
     // can change to set customer name and customer ID
+    public void setCustomerDetails(int customerID, String customerName){
+        this.customerID = customerID;
+        this.customerName = customerName;
+
+        name_label.textProperty().bind(Bindings.format("%s's Rental History",customerName));
+    }
+
+
 
     public void setCustomerID(int customerID) {
         this.customerID = customerID;

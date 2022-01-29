@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerRentalDetails">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerRentalDetails">
    <children>
       <TableView fx:id="rentalDetailsTable" layoutX="81.0" layoutY="198.0" prefHeight="371.0" prefWidth="666.0">
         <columns>
@@ -21,7 +21,7 @@
             <TableColumn fx:id="totalCost_col" minWidth="8.666748046875" prefWidth="90.0" text="Total Cost" />
         </columns>
       </TableView>
-      <Label layoutX="81.0" layoutY="43.0" text="Rental Details">
+      <Label fx:id="name_label" layoutX="81.0" layoutY="51.0" prefHeight="45.0" prefWidth="666.0">
          <font>
             <Font name="System Bold Italic" size="30.0" />
          </font>

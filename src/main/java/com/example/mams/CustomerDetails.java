@@ -193,7 +193,7 @@ public class CustomerDetails implements Initializable {
                             }
 
                             CustomerRentalDetails customerRentalDetails = loader.getController();
-                            customerRentalDetails.setCustomerID(customerTable.getCustomerID());
+                            customerRentalDetails.setCustomerDetails(customerTable.getCustomerID(), customerTable.getFirstName());
                             customerRentalDetails.loadData();
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
