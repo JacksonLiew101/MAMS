@@ -147,7 +147,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="67.0" prefWidth="640.0" style="-fx-background-color: #FFFAF0;">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="44.0" prefWidth="207.0" style="-fx-background-color: #34D999;" text="Insert/Update" textFill="WHITE">
+            <Button fx:id="InsertUpdateButton" mnemonicParsing="false" onMouseClicked="#addNewAlbum" prefHeight="44.0" prefWidth="207.0" style="-fx-background-color: #34D999;" text="Insert/Update" textFill="WHITE">
                <HBox.margin>
                   <Insets left="30.0" right="2.0" top="10.0" />
                </HBox.margin>
@@ -158,7 +158,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#clear" prefHeight="26.0" prefWidth="183.0" style="-fx-background-color: #FF6A59;" text="Clear" textFill="#f2f2f2">
+            <Button fx:id="clear" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="26.0" prefWidth="183.0" style="-fx-background-color: #FF6A59;" text="Clear" textFill="#f2f2f2">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

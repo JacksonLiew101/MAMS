@@ -159,7 +159,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="213.0" layoutY="437.0" prefHeight="106.0" prefWidth="280.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#addNewCustomer" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #34D999;" text="Save" textFill="WHITE">
+                  <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#addNewCustomer" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: #34D999;" text="Save" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </HBox.margin>
@@ -170,7 +170,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="40.0" prefWidth="91.0" style="-fx-background-color: #FF6A59;" text="Clear" textFill="WHITE">
+                  <Button fx:id="clearButton" mnemonicParsing="false" onMouseClicked="#clean" prefHeight="40.0" prefWidth="91.0" style="-fx-background-color: #FF6A59;" text="Clear" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="30.0" top="20.0" />
                      </HBox.margin>
