@@ -141,8 +141,8 @@ public class CustomerDetails implements Initializable {
                         }
                         Image icon3 = new Image(input3);
                         ImageView detailIcon = new ImageView(icon3);
-                        detailIcon.setFitHeight(24);
-                        detailIcon.setFitWidth(24);
+                        detailIcon.setFitHeight(30);
+                        detailIcon.setFitWidth(30);
                         detailIcon.setCursor(Cursor.HAND);
 
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
@@ -207,9 +207,9 @@ public class CustomerDetails implements Initializable {
 
                         HBox manageBtn = new HBox(editIcon, deleteIcon, detailIcon);
                         manageBtn.setStyle("-fx-alignment:center");
-                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
-                        HBox.setMargin(detailIcon, new Insets(2, 3, 0, 2));
+                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 2));
+                        HBox.setMargin(editIcon, new Insets(2, 2, 0, 2));
+                        HBox.setMargin(detailIcon, new Insets(2, 2, 0, 2));
 
                         setGraphic(manageBtn);
 
