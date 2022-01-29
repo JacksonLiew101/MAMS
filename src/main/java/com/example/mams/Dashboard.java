@@ -65,11 +65,11 @@ public class Dashboard implements Initializable {
 
     public void loadData () {
         DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
+        connection = connectNow.getConnection();
 
         try {
             // For bar chart
-            ResultSet rs1 = connectDB.createStatement().executeQuery("SELECT album.ALBUM_NAME, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented FROM album inner join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID GROUP BY ar.ALBUM_ID ORDER BY Total_Rented DESC LIMIT 5");
+            ResultSet rs1 =  connection.createStatement().executeQuery("SELECT album.ALBUM_NAME, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented FROM album inner join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID GROUP BY ar.ALBUM_ID ORDER BY Total_Rented DESC LIMIT 5");
             ArrayList<String> albumName = new ArrayList<String>();
             ArrayList<Integer> totalRented = new ArrayList<Integer>();
 
@@ -89,7 +89,7 @@ public class Dashboard implements Initializable {
             SalesChart.getData().addAll(dataSeries1);
 
             // For table
-            ResultSet rs = connectDB.createStatement().executeQuery("SELECT album.ALBUM_ID, album.ALBUM_NAME,  album.ARTIST, album.ALBUM_UNIT_PRICE, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented, SUM(ar.TOTAL_ALBUM_COST) as Total_Sales FROM album inner join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID GROUP BY ar.ALBUM_ID");
+            ResultSet rs =  connection.createStatement().executeQuery("SELECT album.ALBUM_ID, album.ALBUM_NAME,  album.ARTIST, album.ALBUM_UNIT_PRICE, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented, SUM(ar.TOTAL_ALBUM_COST) as Total_Sales FROM album inner join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID GROUP BY ar.ALBUM_ID");
 
 
             while (rs.next()) {
@@ -124,10 +124,20 @@ public class Dashboard implements Initializable {
             e.printStackTrace();
         }*/
         loadData();
+        try {
+            getTotalAlbumLabel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            getTotalCustomerLabel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         System.out.println("Hello");
     }
     @FXML
-    private void getTotalAlbumLabel(ActionEvent event) throws SQLException {
+    private void getTotalAlbumLabel() throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         //obtain total albums available
@@ -140,6 +150,21 @@ public class Dashboard implements Initializable {
         }
         totalAlbum_label.setText(Integer.toString(TotalAlbum));
         System.out.println(TotalAlbum);
+    }
+    @FXML
+    private void getTotalCustomerLabel() throws SQLException {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        connection = connectNow.getConnection();
+        //obtain total albums available
+        query = "SELECT COUNT(CUSTOMER_ID) AS SUM_CUSTOMER from CUSTOMER";
+        preparedStatement = connection.prepareStatement(query);
+        resultSet = preparedStatement.executeQuery();
+        int TotalCustomer = 0;
+        if(resultSet.next()){
+            TotalCustomer = resultSet.getInt("SUM_CUSTOMER");
+        }
+        totalCustomer_label.setText(Integer.toString(TotalCustomer));
+        System.out.println(TotalCustomer);
     }
 }
 
