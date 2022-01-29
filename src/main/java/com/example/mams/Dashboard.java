@@ -134,7 +134,6 @@ public class Dashboard implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Hello");
     }
     @FXML
     private void getTotalAlbumLabel() throws SQLException {
@@ -149,7 +148,6 @@ public class Dashboard implements Initializable {
             TotalAlbum = resultSet.getInt("SUM_QUANTITY");
         }
         totalAlbum_label.setText(Integer.toString(TotalAlbum));
-        System.out.println(TotalAlbum);
     }
     @FXML
     private void getTotalCustomerLabel() throws SQLException {
@@ -164,7 +162,6 @@ public class Dashboard implements Initializable {
             TotalCustomer = resultSet.getInt("SUM_CUSTOMER");
         }
         totalCustomer_label.setText(Integer.toString(TotalCustomer));
-        System.out.println(TotalCustomer);
     }
 }
 
