@@ -83,23 +83,7 @@ public class RentAlbum implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         refreshData();
-        try{
-            ResultSet rs = connection.createStatement().executeQuery("SELECT * FROM ALBUM");
 
-            while(rs.next()) {
-                //columnLabel is referring to the SQL table column label
-                MusicAlbumList.add(new MusicAlbum(rs.getInt("ALBUM_ID"),
-                        rs.getString("ALBUM_NAME"),
-                        rs.getString("ARTIST"),
-                        rs.getString("GENRE"),
-                        rs.getInt("YEAR_OF_RELEASE"),
-                        rs.getInt("QUANTITY_ON_HAND"),
-                        rs.getInt("ALBUM_UNIT_PRICE") ));
-
-            }
-        } catch (SQLException ignored){
-
-        }
         //value here are referring to the attribute of class MusicAlbum
         albumID_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumID"));
         albumName_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("AlbumName"));
@@ -211,15 +195,6 @@ public class RentAlbum implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private void CancelOrderPage(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CancelOrder.fxml")));
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.initStyle(StageStyle.UTILITY);
-        stage.show();
-    }
 
     private void DialogBoxToShowNowIsEditData(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -345,7 +320,40 @@ public class RentAlbum implements Initializable {
         } catch(SQLException ignored){}
     }
 
+    @FXML
+    private void CancelOrder(ActionEvent event) throws SQLException {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        connection = connectNow.getConnection();
+        query = "UPDATE `RENTAL` SET `RENTAL_STATUS` = 'RETURNED' WHERE RENTAL_ID = ?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1,showRentalID.getText());
+        preparedStatement.executeUpdate();
 
+        query = "DELETE FROM RENTAL WHERE RENTAL_ID = ?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1,showRentalID.getText());
+        preparedStatement.executeUpdate();
+//        query = "DELETE RENTAL WHERE `RENTAL_ID` = ?";
+//        preparedStatement.setString(1,showRentalID.getText());
+//        resultSet = preparedStatement.executeQuery();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Your order is canceled!");
+        alert.setContentText("Your order is canceled. You may close the window and make new order.");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isEmpty()){
+            System.out.println("Alert closed");
+        }
+        else if (result.get() == ButtonType.OK){
+            System.out.println("OK!");
+        }
+        else if (result.get() == ButtonType.CANCEL){
+            System.out.println("Never!");
+        }
+        System.out.println(query);
+        showRentalID.setText(null);
+        clear();
+    }
 
 
 

@@ -2,19 +2,20 @@ package com.example.mams;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.controlsfx.control.action.Action;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ConfirmOrder implements Initializable {
@@ -85,7 +86,7 @@ public class ConfirmOrder implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ConfirmButton.setCursor(Cursor.HAND);
     }
     public void runConfirmOrder()
     {
@@ -137,5 +138,24 @@ public class ConfirmOrder implements Initializable {
         }
         TotalCostLabel.setText(TotalCost);
     }
+    @FXML
+    private void ConfirmMessage(ActionEvent event)
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Your order is accepted!");
+        alert.setContentText("Thank you for choosing us. You may close the window.");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isEmpty()){
+            System.out.println("Alert closed");
+        }
+        else if (result.get() == ButtonType.OK){
+            System.out.println("OK!");
+        }
+        else if (result.get() == ButtonType.CANCEL){
+            System.out.println("Never!");
+        }
+    }
+
 
 }
