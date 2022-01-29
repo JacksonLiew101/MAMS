@@ -9,25 +9,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.AlbumStock">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1280.0" style="-fx-background-color: #B2EBF2;" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.AlbumStock">
    <children>
-      <TableView fx:id="AlbumTable" layoutX="87.0" layoutY="190.0" prefHeight="419.0" prefWidth="985.0">
+      <TableView fx:id="AlbumTable" layoutX="87.0" layoutY="190.0" prefHeight="419.0" prefWidth="985.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="170.0">
         <columns>
-          <TableColumn fx:id="albumID_col" prefWidth="75.0" text="Album ID" />
-          <TableColumn fx:id="albumName_col" prefWidth="250.4000244140625" text="Album Name" />
-            <TableColumn fx:id="artist_col" prefWidth="136.79998779296875" text="Artist" />
-            <TableColumn fx:id="genre_col" prefWidth="99.199951171875" text="Genre" />
-            <TableColumn fx:id="yearOfRelease_col" prefWidth="90.4000244140625" text="Year of Release" />
-            <TableColumn fx:id="quantityOnHand_col" prefWidth="123.20001220703125" text="Quantity On Hand" />
-            <TableColumn fx:id="albumUnitPrice_col" prefWidth="124.0" text="Album Unit Price" />
-            <TableColumn fx:id="button_col" prefWidth="64.0" text="Modify" />
+          <TableColumn fx:id="albumID_col" prefWidth="87.0" text="Album ID" />
+          <TableColumn fx:id="albumName_col" prefWidth="216.0" text="Album Name" />
+            <TableColumn fx:id="artist_col" prefWidth="145.0" text="Artist" />
+            <TableColumn fx:id="genre_col" prefWidth="121.0" text="Genre" />
+            <TableColumn fx:id="yearOfRelease_col" prefWidth="111.0" text="Year of Release" />
+            <TableColumn fx:id="quantityOnHand_col" prefWidth="120.0" text="Quantity On Hand" />
+            <TableColumn fx:id="albumUnitPrice_col" prefWidth="118.0" text="Album Unit Price" />
+            <TableColumn fx:id="button_col" prefWidth="151.0" text="Modify" />
         </columns>
       </TableView>
-      <Text layoutX="168.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album">
+      <Text fill="#902b2b" layoutX="467.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album">
          <font>
-            <Font name="System Bold Italic" size="40.0" />
+            <Font name="Vladimir Script" size="70.0" />
          </font></Text>
-      <Button fx:id="music" layoutX="157.0" layoutY="83.0" mnemonicParsing="false" onAction="#addNewAlbum" onMouseClicked="#addNewAlbum" style="-fx-background-color: transparent;">
+      <Button fx:id="music" layoutX="49.0" layoutY="76.0" mnemonicParsing="false" onAction="#addNewAlbum" onMouseClicked="#addNewAlbum" prefHeight="64.0" prefWidth="73.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="75.0" fitWidth="81.0">
                <image>
@@ -36,7 +36,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="refreshButton" layoutX="326.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#refreshTable" style="-fx-background-color: transparent;">
+      <Button fx:id="refreshButton" layoutX="164.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#refreshTable" prefHeight="64.0" prefWidth="84.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="64.0" fitWidth="68.0">
                <image>
@@ -44,5 +44,10 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="662.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@album.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
