@@ -158,7 +158,7 @@ public class CustomerRentalDetails implements Initializable{
                         });
 
                         HBox manageBtn = new HBox(returnIcon);
-                        manageBtn.setStyle("-fx-alignment:center");
+                        manageBtn.setStyle("-fx-alignment:left");
                         HBox.setMargin(returnIcon, new Insets(2, 2, 0, 3));
 
                         setGraphic(manageBtn);
