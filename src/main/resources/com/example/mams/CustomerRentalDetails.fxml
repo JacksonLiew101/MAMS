@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerRentalDetails">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerRentalDetails">
    <children>
       <TableView fx:id="rentalDetailsTable" layoutX="81.0" layoutY="198.0" prefHeight="371.0" prefWidth="721.0">
         <columns>
@@ -32,7 +28,7 @@
             <Font name="System Bold" size="14.666666984558105" />
          </font>
       </Label>
-      <ImageView fitHeight="39.0" fitWidth="19.0" layoutX="163.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="20.0" layoutX="163.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@search.png" />
          </image>
