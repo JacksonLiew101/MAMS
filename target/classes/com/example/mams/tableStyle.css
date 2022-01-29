@@ -37,3 +37,7 @@
 .table-view .column-header .label{
     -fx-alignment: LEFT;
 }
+
+.background{
+    -fx-background-color: linear-gradient(#ffffff, #B0BAC9);
+}
