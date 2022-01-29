@@ -2,6 +2,8 @@ package com.example.mams;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,6 +61,8 @@ public class RentAlbum implements Initializable {
     private DatePicker RentalDateInput;
     @FXML
     private Button MakeNewRentalButton,clearButton,refreshButton;
+    @FXML
+    private TextField searchTextfield;
 
     String query = null;
     Connection connection = null;
@@ -84,14 +88,6 @@ public class RentAlbum implements Initializable {
         connection = connectNow.getConnection();
         refreshData();
 
-        //value here are referring to the attribute of class MusicAlbum
-        albumID_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumID"));
-        albumName_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("AlbumName"));
-        artist_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Artist"));
-        genre_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Genre"));
-        yearOfRelease_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("YearOfRelease"));
-        quantityOnHand_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("QuantityOnHand"));
-        albumUnitPrice_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumUnitPrice"));
         //add cell of button edit
         Callback<TableColumn<MusicAlbum, String>, TableCell<MusicAlbum, String>> cellFactory = (TableColumn<MusicAlbum, String> param) -> {
             // make cell containing buttons
@@ -159,8 +155,56 @@ public class RentAlbum implements Initializable {
 
             return cell;
         };
+
+        //value here are referring to the attribute of class MusicAlbum
+        albumID_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumID"));
+        albumName_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("AlbumName"));
+        artist_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Artist"));
+        genre_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,String>("Genre"));
+        yearOfRelease_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("YearOfRelease"));
+        quantityOnHand_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("QuantityOnHand"));
+        albumUnitPrice_col.setCellValueFactory(new PropertyValueFactory<MusicAlbum,Integer>("AlbumUnitPrice"));
         button_col.setCellFactory(cellFactory);
         AlbumTable.setItems(MusicAlbumList);
+
+        //Initializing filtered list
+        FilteredList<MusicAlbum> filteredData = new FilteredList<>(MusicAlbumList, b->true);
+
+        searchTextfield.textProperty().addListener((observable, oldValue, newValue )-> {
+            filteredData.setPredicate(musicAlbum -> {
+
+                // If no search value then display all records or whatever records it current have. no changes.
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    return true;
+                }
+
+                String searchKeyword = newValue.toLowerCase();
+
+                // true means found a match, false means no match found
+                if(String.valueOf(musicAlbum.getAlbumID()).toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (musicAlbum.getAlbumName().toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (musicAlbum.getArtist().toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else if (musicAlbum.getGenre().toLowerCase().indexOf(searchKeyword) > -1) {
+                    return true;
+                }else if (String.valueOf(musicAlbum.getYearOfRelease()).toLowerCase().indexOf(searchKeyword) > -1){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+
+            SortedList<MusicAlbum> sortedData = new SortedList<>(filteredData);
+
+            // Bind sorted result with Table View
+            sortedData.comparatorProperty().bind(AlbumTable.comparatorProperty());
+
+            // Apply filtered and sorted data to the Table View
+            AlbumTable.setItems(sortedData);
+
+        });
 
     }
 
