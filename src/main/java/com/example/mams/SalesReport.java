@@ -2,9 +2,12 @@ package com.example.mams;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,9 +16,18 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class SalesReport implements Initializable {
+
+    // For Bar chart
+    @FXML
+    private BarChart<String, Integer> SalesChart;
+    @FXML
+    private CategoryAxis xAxis;
+    @FXML
+    private NumberAxis yAxis;
 
     @FXML
     // <CustomerTable> is referring to the java class SalesReportTableClass
@@ -35,14 +47,36 @@ public class SalesReport implements Initializable {
 
     ObservableList<SalesReportTableClass> oblist = FXCollections.observableArrayList();
 
-    public void loadData() {
+    public void loadData () {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        try{
+        try {
+            // For bar chart
+            ResultSet rs1 = connectDB.createStatement().executeQuery("SELECT album.ALBUM_NAME, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented FROM album inner join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID GROUP BY ar.ALBUM_ID ORDER BY Total_Rented DESC LIMIT 5");
+            ArrayList<String> albumName = new ArrayList<String>();
+            ArrayList<Integer> totalRented = new ArrayList<Integer>();
+
+            while (rs1.next()) {
+                albumName.add(rs1.getString(1));
+                totalRented.add(rs1.getInt(2));
+            }
+            rs1.close();
+
+            CategoryAxis xAxis = new CategoryAxis();
+            NumberAxis yAxis = new NumberAxis();
+            XYChart.Series<String, Integer> dataSeries1 = new XYChart.Series();
+
+            for (int i = 0; i < albumName.size(); i++) {
+                dataSeries1.getData().add(new XYChart.Data(totalRented.get(i), albumName.get(i)));
+            }
+            SalesChart.getData().addAll(dataSeries1);
+
+            // For table
             ResultSet rs = connectDB.createStatement().executeQuery("SELECT album.ALBUM_ID, album.ALBUM_NAME,  album.ARTIST, album.ALBUM_UNIT_PRICE, SUM(ar.QUANTITY_ALBUM_RENTED) as Total_Rented, SUM(ar.TOTAL_ALBUM_COST) as Total_Sales FROM album inner join album_rental as ar on album.ALBUM_ID = ar.ALBUM_ID GROUP BY ar.ALBUM_ID");
 
-            while(rs.next()) {
+
+            while (rs.next()) {
                 //columnLabel is referring to the SQL table column label
                 oblist.add(new SalesReportTableClass(rs.getInt("ALBUM_ID"),
                         rs.getString("ALBUM_NAME"),
@@ -52,22 +86,25 @@ public class SalesReport implements Initializable {
                         rs.getDouble("Total_Sales")));
 
             }
-        } catch (SQLException ignored){
+        } catch (SQLException ignored) {
 
         }
-        //value here are referring to the attribute of class SalesReportTableClass
-        AlbumID_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,Integer>("AlbumID"));
-        AlbumName_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,String>("AlbumName"));
-        Artist_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,String>("Artist"));
-        Price_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,Double>("AlbumUnitPrice"));
-        totalRentedAlbumQuantity_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,Integer>("TotalRentedAlbumQuantity"));
-        totalSales_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass,Double>("TotalSales"));
+        //value here are referring to the attribute of class MusicAlbum
+        AlbumID_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, Integer>("AlbumID"));
+        AlbumName_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, String>("AlbumName"));
+        Artist_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, String>("Artist"));
+        Price_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, Double>("AlbumUnitPrice"));
+        totalRentedAlbumQuantity_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, Integer>("TotalRentedAlbumQuantity"));
+        totalSales_col.setCellValueFactory(new PropertyValueFactory<SalesReportTableClass, Double>("TotalSales"));
         salesReportTable.setItems(oblist);
 
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize (URL url, ResourceBundle resourceBundle){
         loadData();
     }
 }
+
+
+
