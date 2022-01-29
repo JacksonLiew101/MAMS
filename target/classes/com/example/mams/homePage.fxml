@@ -20,17 +20,21 @@
                <children>
                   <Pane layoutX="61.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #696867;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <ImageView fx:id="exit" fitHeight="22.0" fitWidth="22.0" layoutX="1237.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@cancel.png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="exitButton" layoutX="1242.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fx:id="exit" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@cancel.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="43.0" layoutY="7.0" text="Music Album Management System" textFill="WHITE" />
                         <ImageView fitHeight="51.0" fitWidth="50.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@MAMSIconGrey.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="43.0" layoutY="7.0" text="Music Album Management System" textFill="WHITE" />
                      </children></Pane>
                </children>
             </AnchorPane>
