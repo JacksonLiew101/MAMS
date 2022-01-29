@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerRentalDetails">
    <children>
-      <TableView fx:id="rentalDetailsTable" layoutX="81.0" layoutY="198.0" prefHeight="371.0" prefWidth="666.0">
+      <TableView fx:id="rentalDetailsTable" layoutX="81.0" layoutY="198.0" prefHeight="371.0" prefWidth="721.0">
         <columns>
           <TableColumn fx:id="rentalID_col" prefWidth="84.66663360595703" text="Rental ID" />
           <TableColumn fx:id="rentalDate_col" prefWidth="100.66661071777344" text="Rental Date" />
@@ -19,6 +19,7 @@
             <TableColumn fx:id="albumQuantity_col" minWidth="0.0" prefWidth="83.33331298828125" text="Quantity" />
             <TableColumn fx:id="albumName_col" prefWidth="194.00009155273438" text="Album Name" />
             <TableColumn fx:id="totalCost_col" minWidth="8.666748046875" prefWidth="90.0" text="Total Cost" />
+            <TableColumn fx:id="return_col" prefWidth="75.0" text="Return" />
         </columns>
       </TableView>
       <Label fx:id="name_label" layoutX="81.0" layoutY="51.0" prefHeight="45.0" prefWidth="666.0">
