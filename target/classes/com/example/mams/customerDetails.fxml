@@ -6,38 +6,37 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerDetails">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: BDBDBD;" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerDetails">
    <children>
-      <TableView fx:id="CustomerTable" layoutX="160.0" layoutY="203.0" prefHeight="390.0" prefWidth="783.0">
+      <TableView fx:id="CustomerTable" layoutY="144.0" prefHeight="657.0" prefWidth="1280.0">
         <columns>
-          <TableColumn fx:id="CustomerID" prefWidth="90.39996337890625" text="Customer ID" />
-          <TableColumn fx:id="FirstName" prefWidth="165.60003662109375" text="First Name" />
-            <TableColumn fx:id="LastName" prefWidth="195.20001220703125" text="Last Name" />
-            <TableColumn fx:id="Email" prefWidth="112.0001220703125" text="Email" />
-            <TableColumn fx:id="PhoneNo" minWidth="0.0" prefWidth="115.199951171875" text="Phone No." />
-            <TableColumn fx:id="CardID" minWidth="0.0" prefWidth="98.4000244140625" text="Card ID" />
+          <TableColumn fx:id="CustomerID" prefWidth="171.0" text="Customer ID" />
+          <TableColumn fx:id="FirstName" prefWidth="182.0" text="First Name" />
+            <TableColumn fx:id="LastName" prefWidth="186.0" text="Last Name" />
+            <TableColumn fx:id="Email" prefWidth="220.0" text="Email" />
+            <TableColumn fx:id="PhoneNo" minWidth="0.0" prefWidth="244.0" text="Phone No." />
+            <TableColumn fx:id="CardID" minWidth="0.0" prefWidth="276.0" text="Card ID" />
         </columns>
       </TableView>
-      <Text layoutX="160.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Table" />
-      <Button fx:id="AddCustomer" layoutX="146.0" layoutY="43.0" mnemonicParsing="false" onAction="#AddNewCustomer" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView>
-               <image>
-                  <Image url="@add-user-male.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="RefreshButton" layoutX="347.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#refreshTable" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView>
-               <image>
-                  <Image url="@refresh.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button fx:id="AddCustomer" layoutX="125.0" layoutY="76.0" mnemonicParsing="false" onAction="#AddNewCustomer" style="-fx-background-color: transparent;" />
+      <Button fx:id="RefreshButton" layoutX="272.0" layoutY="76.0" mnemonicParsing="false" onMouseClicked="#refreshTable" style="-fx-background-color: transparent;" />
+      <ImageView layoutX="260.0" layoutY="43.0">
+         <image>
+            <Image url="@refresh.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="97.0" layoutY="36.0">
+         <image>
+            <Image url="@add-user-male.png" />
+         </image>
+      </ImageView>
+      <Text fill="#ae2424" layoutX="533.0" layoutY="105.0" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer">
+         <font>
+            <Font name="Vladimir Script" size="70.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
