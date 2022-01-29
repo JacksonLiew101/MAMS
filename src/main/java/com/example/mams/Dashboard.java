@@ -2,12 +2,14 @@ package com.example.mams;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -49,13 +51,16 @@ public class Dashboard implements Initializable {
     private TableColumn<SalesReportTableClass, Double> totalSales_col;
 
     @FXML
-    private Label totalAlbumAvailable;
+    private Label totalAlbum_label;
+    @FXML
+    private Label totalCustomer_label;
+    @FXML
+    private Button totalAlbumButton;
+
     String query = null;
     Connection connection = null;
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
-    String LatestRentalID = null;
-
     ObservableList<SalesReportTableClass> oblist = FXCollections.observableArrayList();
 
     public void loadData () {
@@ -113,26 +118,31 @@ public class Dashboard implements Initializable {
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle){
+      /*  try {
+            getTotalAlbumLabel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
         loadData();
+        System.out.println("Hello");
     }
-
-   public void getTotalAlbumAvailable() throws SQLException {
+    @FXML
+    private void getTotalAlbumLabel(ActionEvent event) throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         //obtain total albums available
-        query = "SELECT `CUSTOMER_ID` FROM RENTAL WHERE `RENTAL_ID` = ?";
+        query = "SELECT SUM(QUANTITY_ON_HAND) AS SUM_QUANTITY from ALBUM";
         preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1,RentalIDLabel.getText());
         resultSet = preparedStatement.executeQuery();
-        String CustomerID = null;
+        int TotalAlbum = 0;
         if(resultSet.next()){
-            CustomerID = resultSet.getString("CUSTOMER_ID");
+            TotalAlbum = resultSet.getInt("SUM_QUANTITY");
         }
-        CustomerIDLabel.setText(CustomerID);
-    }*/
+        totalAlbum_label.setText(Integer.toString(TotalAlbum));
+        System.out.println(TotalAlbum);
+        System.out.println("Hello");
+    }
 }
-
-
 
 
 
