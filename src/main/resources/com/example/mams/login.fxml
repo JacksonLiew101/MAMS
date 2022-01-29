@@ -40,11 +40,11 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="435.0" layoutY="250.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="EmailInput" layoutX="435.0" layoutY="250.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <PasswordField layoutX="435.0" layoutY="313.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
+            <PasswordField fx:id="passwordInput" layoutX="435.0" layoutY="313.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font size="16.0" />
                </font></PasswordField>
@@ -58,7 +58,7 @@
                   <Image url="@unlock.png" />
                </image>
             </ImageView>
-            <Button fx:id="button2" layoutX="390.0" layoutY="400.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="194.0" style="-fx-background-color: E419C4; -fx-background-color: 7C17BA;" text="Button" textFill="WHITE" />
+            <Button fx:id="button2" layoutX="390.0" layoutY="400.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="63.0" prefWidth="194.0" style="-fx-background-color: E419C4; -fx-background-color: 7C17BA;" text="Button" textFill="WHITE" />
             <Text layoutX="356.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back,">
                <font>
                   <Font name="System Bold" size="43.0" />

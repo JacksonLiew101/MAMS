@@ -355,6 +355,4 @@ public class RentAlbum implements Initializable {
         clear();
     }
 
-
-
 }
