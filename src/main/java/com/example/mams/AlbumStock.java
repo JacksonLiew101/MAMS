@@ -216,7 +216,7 @@ public class AlbumStock implements Initializable {
     }
 
     @FXML
-    private void refreshTable(MouseEvent event) {
+    public void refreshTable(MouseEvent event) {
         refreshData();
     }
 
