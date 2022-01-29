@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
@@ -38,5 +40,14 @@
             <TableColumn fx:id="button_col" prefWidth="103.199951171875" text="Rent Album" />
         </columns>
       </TableView>
+      <Button fx:id="refreshButton" layoutX="801.0" layoutY="37.0" mnemonicParsing="false" onAction="#Refresh" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="46.0" fitWidth="59.0">
+               <image>
+                  <Image url="@refresh.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

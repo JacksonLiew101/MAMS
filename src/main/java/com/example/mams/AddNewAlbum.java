@@ -135,6 +135,7 @@ public class AddNewAlbum implements Initializable {
         AlbumQuantityInput.setText(String.valueOf(quantity));
         AlbumUnitPriceInput.setText(String.valueOf(albumUnitPrice));
     }
+
     private void DialogBoxInAddNewAlbum() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("New Album Added / Changed Successfully!");

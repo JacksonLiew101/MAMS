@@ -58,7 +58,7 @@ public class RentAlbum implements Initializable {
     @FXML
     private DatePicker RentalDateInput;
     @FXML
-    private Button MakeNewRentalButton,clearButton;
+    private Button MakeNewRentalButton,clearButton,refreshButton;
 
     String query = null;
     Connection connection = null;
@@ -75,14 +75,16 @@ public class RentAlbum implements Initializable {
 
 
     MusicAlbum musicAlbum = null;
-    DatabaseConnection connectNow = new DatabaseConnection();
-    Connection connectDB = connectNow.getConnection();
+//    DatabaseConnection connectNow = new DatabaseConnection();
+//    Connection connectDB = connectNow.getConnection();
     ObservableList<MusicAlbum> MusicAlbumList = FXCollections.observableArrayList();
     public void loadData(){
 
-
+        DatabaseConnection connectNow = new DatabaseConnection();
+        connection = connectNow.getConnection();
+        refreshData();
         try{
-            ResultSet rs = connectDB.createStatement().executeQuery("SELECT * FROM ALBUM");
+            ResultSet rs = connection.createStatement().executeQuery("SELECT * FROM ALBUM");
 
             while(rs.next()) {
                 //columnLabel is referring to the SQL table column label
@@ -138,21 +140,25 @@ public class RentAlbum implements Initializable {
                             DialogBoxToShowNowIsEditData();
                             musicAlbum = AlbumTable.getSelectionModel().getSelectedItem();
                             FXMLLoader loader = new FXMLLoader ();
-                            loader.setLocation(getClass().getResource("addNewAlbum.fxml"));
+                            loader.setLocation(getClass().getResource("ConfirmRentalAlbumQuantity.fxml"));
                             try {
                                 loader.load();
                             } catch (IOException ignored) {
                             }
                             // TODO: change AddNewAlbum class to chooseAlbum Class(which i havent created)
-                            AddNewAlbum addNewAlbum = loader.getController();
-                            addNewAlbum.setUpdate(true);
-                            addNewAlbum.setTextField(musicAlbum.getAlbumID(), musicAlbum.getAlbumName(), musicAlbum.getArtist(), musicAlbum.getGenre(),musicAlbum.getYearOfRelease(), musicAlbum.getQuantityOnHand(), musicAlbum.getAlbumUnitPrice());
+                            ConfirmRentalAlbumQuantity confirmRentalAlbumQuantity = loader.getController();
+//                            public void setLabel(String albumIDLabel, String albumNameLabel, String albumUnitPriceLabel,
+//                                    String artistLabel, String genreLabel, String  rentalIDLabel,
+//                                    String stockAvailableLabel, String yearOfReleaseLabel)
+                            confirmRentalAlbumQuantity.setLabel(String.valueOf(musicAlbum.getAlbumID()), musicAlbum.getAlbumName(),
+                                    String.valueOf(musicAlbum.getAlbumUnitPrice()), musicAlbum.getArtist(),
+                                    musicAlbum.getGenre(), showRentalID.getText(),
+                                    String.valueOf(musicAlbum.getQuantityOnHand()), String.valueOf(musicAlbum.getYearOfRelease()) );
                             Parent parent = loader.getRoot();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
                             stage.initStyle(StageStyle.UTILITY);
                             stage.show();
-
                         });
 
                         HBox manageBtn = new HBox(addIcon);
@@ -180,6 +186,7 @@ public class RentAlbum implements Initializable {
         clearButton.setCursor(Cursor.HAND);
         confirmButton.setCursor(Cursor.HAND);
         cancelButton.setCursor(Cursor.HAND);
+        refreshButton.setCursor(Cursor.HAND);
         loadData();
     }
 
@@ -225,6 +232,7 @@ public class RentAlbum implements Initializable {
 
     @FXML
     private void addNewRental(ActionEvent event){
+        DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         String customerID = CustomerIDInput.getText();
         String RentalDate = String.valueOf(RentalDateInput.getValue());
@@ -250,6 +258,7 @@ public class RentAlbum implements Initializable {
     }
 
     public String getRentalID() throws SQLException {
+        DatabaseConnection connectNow = new DatabaseConnection();
         connection = connectNow.getConnection();
         //obtain CARD ID
         query = "SELECT `RENTAL_ID` FROM RENTAL WHERE `CUSTOMER_ID` = ? AND `RENTAL_DATE` = ?";
@@ -302,4 +311,31 @@ public class RentAlbum implements Initializable {
             System.out.println("Never!");
         }
     }
+
+    @FXML
+    private void Refresh(ActionEvent event){
+        refreshData();
+    }
+
+    private void refreshData() {
+        try {
+            MusicAlbumList.clear();
+
+            ResultSet rs = connection.createStatement().executeQuery("SELECT * FROM `ALBUM`");
+
+            while(rs.next()) {
+                //columnLabel is referring to the SQL table column label
+                MusicAlbumList.add(new MusicAlbum(rs.getInt("ALBUM_ID"),
+                        rs.getString("ALBUM_NAME"),
+                        rs.getString("ARTIST"),
+                        rs.getString("GENRE"),
+                        rs.getInt("YEAR_OF_RELEASE"),
+                        rs.getInt("QUANTITY_ON_HAND"),
+                        rs.getInt("ALBUM_UNIT_PRICE") ));
+            }
+        } catch(SQLException ignored){}
+    }
+
+
+
 }
