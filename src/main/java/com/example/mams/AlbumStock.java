@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -174,7 +175,7 @@ public class AlbumStock implements Initializable {
                         });
 
                         HBox manageBtn = new HBox(editIcon, deleteIcon);
-                        manageBtn.setStyle("-fx-alignment:center");
+                        manageBtn.setStyle("-fx-alignment:left");
                         HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
                         HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
 
