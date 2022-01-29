@@ -8,7 +8,7 @@ public class DatabaseConnection {
     public Connection getConnection(){
         String databaseName = "java_mams";
         String databaseUser = "root"; // change it according to your MYSQL DB username
-        String databasePassword = "Kc301a041";// change it according to your MYSQL DB user password
+        String databasePassword = "Tzj+0124739729";// change it according to your MYSQL DB user password
         String url = "jdbc:mysql://localhost/" + databaseName;
 
         try {

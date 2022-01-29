@@ -25,13 +25,13 @@
             <TableColumn fx:id="button_col" prefWidth="151.0" text="Modify" />
         </columns>
       </TableView>
-      <Text fill="#902b2b" layoutX="467.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album">
+      <Text fill="#902b2b" layoutX="442.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album">
          <font>
             <Font name="Vladimir Script" size="70.0" />
          </font></Text>
-      <Button fx:id="music" layoutX="49.0" layoutY="76.0" mnemonicParsing="false" onAction="#addNewAlbum" onMouseClicked="#addNewAlbum" prefHeight="64.0" prefWidth="73.0" style="-fx-background-color: transparent;">
+      <Button fx:id="music" layoutX="65.0" layoutY="80.0" mnemonicParsing="false" onAction="#addNewAlbum" onMouseClicked="#addNewAlbum" prefHeight="64.0" prefWidth="73.0" style="-fx-background-color: transparent;">
          <graphic>
-            <ImageView fitHeight="75.0" fitWidth="81.0">
+            <ImageView fitHeight="64.0" fitWidth="68.0">
                <image>
                   <Image url="@add-song.png" />
                </image>
@@ -46,21 +46,21 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="662.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="617.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@album.png" />
          </image>
       </ImageView>
-      <Label layoutX="773.0" layoutY="121.0" text="Search Item">
+      <Label layoutX="803.0" layoutY="122.0" text="Search">
          <font>
             <Font name="System Bold" size="14.666666984558105" />
          </font>
       </Label>
-      <ImageView fitHeight="40.0" fitWidth="20.0" layoutX="855.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="20.0" layoutX="850.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@search.png" />
          </image>
       </ImageView>
-      <TextField fx:id="searchTextfield" layoutX="875.0" layoutY="117.0" prefHeight="31.0" prefWidth="206.0" promptText="Enter Keywords Here" />
+      <TextField fx:id="searchTextfield" layoutX="875.0" layoutY="117.0" prefHeight="31.0" prefWidth="206.0" promptText="Enter Keywords Here" style="-fx-background-color: F5F5F5;" />
    </children>
 </AnchorPane>
