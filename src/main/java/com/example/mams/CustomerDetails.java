@@ -233,6 +233,7 @@ public class CustomerDetails implements Initializable {
 
     @FXML
     private void AddNewCustomer(ActionEvent event) throws IOException {
+        DialogBoxToShowNowIsInsertNewData();
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddNewCustomer.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
