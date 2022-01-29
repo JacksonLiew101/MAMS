@@ -20,7 +20,7 @@
             <TableColumn fx:id="yearOfRelease_col" prefWidth="90.4000244140625" text="Year of Release" />
             <TableColumn fx:id="quantityOnHand_col" prefWidth="123.20001220703125" text="Quantity On Hand" />
             <TableColumn fx:id="albumUnitPrice_col" prefWidth="124.0" text="Album Unit Price" />
-            <TableColumn fx:id="button_col" prefWidth="64.0" />
+            <TableColumn fx:id="button_col" prefWidth="64.0" text="Modify" />
         </columns>
       </TableView>
       <Text layoutX="168.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album">
