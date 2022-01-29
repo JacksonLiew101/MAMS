@@ -64,16 +64,16 @@
             <Font size="14.0" />
          </font></Button>
       <TableView fx:id="AlbumTable" layoutX="16.0" layoutY="400.0" prefHeight="441.0" prefWidth="1040.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="330.0">
-        <columns>
-          <TableColumn fx:id="albumID_col" prefWidth="98.0" text="AlbumID" />
-          <TableColumn fx:id="albumName_col" prefWidth="254.0" text="Album Name" />
+         <columns>
+            <TableColumn fx:id="albumID_col" prefWidth="98.0" text="AlbumID" />
+            <TableColumn fx:id="albumName_col" prefWidth="254.0" text="Album Name" />
             <TableColumn fx:id="artist_col" prefWidth="179.0" text="Artist" />
             <TableColumn fx:id="genre_col" prefWidth="96.0" text="Genre" />
             <TableColumn fx:id="yearOfRelease_col" prefWidth="91.20001220703125" text="Year of Release" />
             <TableColumn fx:id="quantityOnHand_col" prefWidth="117.5999755859375" text="Quantity On Hand" />
             <TableColumn fx:id="albumUnitPrice_col" prefWidth="103.199951171875" text="Album Unit Price" />
             <TableColumn fx:id="button_col" prefWidth="103.199951171875" text="Rent Album" />
-        </columns>
+         </columns>
       </TableView>
       <Button fx:id="refreshButton" layoutX="969.0" layoutY="115.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="64.0" prefWidth="67.0" style="-fx-background-color: transparent;" />
       <ImageView fitHeight="40.0" fitWidth="20.0" layoutX="751.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
@@ -94,3 +94,5 @@
       </Label>
    </children>
 </AnchorPane>
+
+
