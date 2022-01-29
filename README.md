@@ -42,6 +42,7 @@ _[Works in IntelliJ Community edition]_
 
 5. Go to src folder and open _DatabaseConnection.java_. Look for databaseUser and databasePassword and change to your own credentials.
 
+6. If you still need further guidance on how to connect JAVAFX with MYSQL, you may refer to [this video](https://www.youtube.com/watch?v=whhSR0wlWQY&t=479s).
 ## _Special Note on Implementation_
 
 | Item | Description |
