@@ -6,9 +6,9 @@
 A desktop application system that allows the shop owner to:
 - Keep track of available music albums
 - Keep track of rented items
-- Track sales and stock reporting. 
+- Track sales and stock reporting 
 - Keep track of the customer details and the related rental history
-- View the summary of the overall popularity of the music albums.
+- View the summary of the overall popularity of the music albums
 
 ## Installation
 
