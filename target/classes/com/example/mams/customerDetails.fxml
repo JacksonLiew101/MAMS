@@ -14,15 +14,15 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="background" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.CustomerDetails">
    <children>
       <TableView fx:id="CustomerTable" layoutX="20.0" layoutY="198.0" prefHeight="433.0" prefWidth="1060.0" AnchorPane.bottomAnchor="169.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="198.0">
-        <columns>
-          <TableColumn fx:id="CustomerID" prefWidth="115.0" text="Customer ID" />
-          <TableColumn fx:id="FirstName" prefWidth="134.0" text="First Name" />
+         <columns>
+            <TableColumn fx:id="CustomerID" prefWidth="115.0" text="Customer ID" />
+            <TableColumn fx:id="FirstName" prefWidth="134.0" text="First Name" />
             <TableColumn fx:id="LastName" prefWidth="138.0" text="Last Name" />
             <TableColumn fx:id="Email" prefWidth="164.0" text="Email" />
             <TableColumn fx:id="PhoneNo" minWidth="0.0" prefWidth="156.0" text="Phone No." />
             <TableColumn fx:id="CardID" minWidth="0.0" prefWidth="136.0" text="Card ID" />
             <TableColumn fx:id="button_col" minWidth="0.0" prefWidth="215.0" />
-        </columns>
+         </columns>
       </TableView>
       <Text fill="#4a4444" layoutX="20.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Details">
          <font>
@@ -63,3 +63,5 @@
       </Label>
    </children>
 </AnchorPane>
+
+
