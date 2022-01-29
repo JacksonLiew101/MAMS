@@ -38,12 +38,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/mysql-connector-java-8.0.28.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="mysql-connector-java-8.0.28" level="application" />
   </component>
 </module>
