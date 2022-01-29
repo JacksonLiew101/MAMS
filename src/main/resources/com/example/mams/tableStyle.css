@@ -38,6 +38,14 @@
     -fx-alignment: LEFT;
 }
 
-.background{
-    -fx-background-color: linear-gradient(#ffffff, #B0BAC9);
+.table-row-cell:selected {
+    -fx-background-color: rgba(147, 190, 236, 0.91);
+}
+.table-row-cell:selected .text {
+    -fx-fill: #902ef6;
+}
+
+.table-row-cell:selected:filled:hover {
+    -fx-view-order: -1;
+    -fx-effect: dropshadow(gaussian, #67676D, 12, 0.05, 0.0, 2);
 }
