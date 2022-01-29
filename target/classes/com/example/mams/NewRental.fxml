@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.mams.NewRental"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.NewRental">
+   <children>
+      <Text layoutX="33.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Rental" />
+      <Text layoutX="30.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" />
+      <Text layoutX="30.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rental Date" />
+      <TextField fx:id="CustomerIDInput" layoutX="107.0" layoutY="60.0" promptText="Enter" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" />
+      <Button fx:id="confirmButton" layoutX="66.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#addNewRental" text="Confirm" />
+      <Button fx:id="clearButton" layoutX="299.0" layoutY="281.0" mnemonicParsing="false" onAction="#clean" onMouseClicked="#clean" text="Clear" />
+      <DatePicker fx:id="RentalDateInput" layoutX="107.0" layoutY="162.0" />
+   </children>
 </AnchorPane>
