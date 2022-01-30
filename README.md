@@ -1,6 +1,6 @@
 # Music Album Management System(MAMS)
 ## ✨_The Best System for Music Album Rental_✨
-[![N|Solid](https://imgur.com/SfsSWqz.png)](https://nodesource.com/products/nsolid)
+![N|Solid](https://imgur.com/SfsSWqz.png)
 
 ## Features
 A desktop application system that allows the shop owner to:
