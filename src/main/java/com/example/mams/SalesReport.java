@@ -10,6 +10,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -50,6 +51,9 @@ public class SalesReport implements Initializable {
 
     @FXML
     private TextField searchTextfield;
+
+    @FXML
+    private Label totalSalesLabel;
 
     ObservableList<SalesReportTableClass> oblist = FXCollections.observableArrayList();
 
@@ -144,7 +148,26 @@ public class SalesReport implements Initializable {
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle){
         loadData();
+        try {
+            setTotalSalesLabel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+    @FXML
+    public void setTotalSalesLabel() throws SQLException {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+        //obtain min customer_ID
+        String query = "SELECT SUM(TOTAL_RENTAL_COST) AS TOTALCOST FROM RENTAL";
+        ResultSet rs1 = connectDB.createStatement().executeQuery(query);
+
+        if(rs1.next()){
+            totalSalesLabel.setText(rs1.getString("TOTALCOST"));
+        }
+    }
+
 }
 
 

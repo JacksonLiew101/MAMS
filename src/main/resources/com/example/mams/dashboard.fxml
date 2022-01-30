@@ -9,7 +9,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.Dashboard">
 <children>
@@ -23,10 +22,9 @@
             <TableColumn fx:id="totalSales_col" prefWidth="150.4000244140625" text="Total Sales(RM)" />
         </columns>
     </TableView>
-    <Text layoutX="119.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Report" />
     <BarChart fx:id="SalesChart" categoryGap="2.0" layoutX="127.0" layoutY="325.0" legendVisible="false" prefHeight="300.0" prefWidth="942.0" styleClass="default-color0" stylesheets="@Style.css" title="Top 5 Popular Album">
         <xAxis>
-            <NumberAxis fx:id="yAxis" label="Total Sales" side="BOTTOM" />
+            <NumberAxis fx:id="yAxis" label="Quantity of albums rented" side="BOTTOM" />
         </xAxis>
         <yAxis>
             <CategoryAxis cache="true" side="LEFT" fx:id="xAxis" />

@@ -34,7 +34,7 @@
          </font></Text>
         <BarChart fx:id="SalesChart" categoryGap="2.0" layoutX="232.0" layoutY="20.0" legendVisible="false" prefHeight="300.0" prefWidth="844.0" styleClass="default-color0" stylesheets="@Style.css" title="Top 5 Popular Album">
             <xAxis>
-                <NumberAxis fx:id="yAxis" label="Total Sales" side="BOTTOM" />
+                <NumberAxis fx:id="yAxis" label="Quantity of albums rented" side="BOTTOM" />
             </xAxis>
             <yAxis>
                 <CategoryAxis cache="true" prefHeight="201.0" prefWidth="0.0" side="LEFT" fx:id="xAxis" />
@@ -66,5 +66,11 @@
             <Font name="System Bold" size="14.666666984558105" />
          </font>
       </Label>
+      <Label fx:id="totalSalesLabel" layoutX="298.0" layoutY="331.0" text="Label" />
+      <Text fill="#902b2b" layoutX="26.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales(RM)">
+         <font>
+            <Font name="Vladimir Script" size="40.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

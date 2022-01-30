@@ -9,63 +9,40 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1280.0" styleClass="background" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.Dashboard">
-    <children>
-        <AnchorPane layoutX="86.0" layoutY="302.0" prefHeight="324.0" prefWidth="967.0" style="-fx-background-color: white;">
-            <children>
-                <BarChart fx:id="SalesChart" categoryGap="2.0" layoutY="14.0" legendVisible="false" prefHeight="300.0" prefWidth="942.0" styleClass="default-color0" stylesheets="@Style.css" title="Top 5 Popular Album">
-                    <xAxis>
-                        <NumberAxis fx:id="yAxis" label="Total Sales" side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                        <CategoryAxis cache="true" side="LEFT" fx:id="xAxis" />
-                    </yAxis>
-                </BarChart>
-            </children>
-        </AnchorPane>
-        <TableView fx:id="salesReportTable" layoutX="110.0" layoutY="376.0" prefHeight="284.0" prefWidth="942.0" stylesheets="@tableStyle.css" visible="false">
-            <columns>
-                <TableColumn fx:id="AlbumID_col" prefWidth="75.0" text="Album ID" />
-                <TableColumn fx:id="AlbumName_col" prefWidth="221.60003662109375" text="Album Name" />
-                <TableColumn fx:id="Artist_col" prefWidth="188.79998779296875" text="Artist" />
-                <TableColumn fx:id="Price_col" prefWidth="107.99993896484375" text="Price(RM)" />
-                <TableColumn fx:id="totalRentedAlbumQuantity_col" prefWidth="193.5999755859375" text="Total Rented Album Quantity" />
-                <TableColumn fx:id="totalSales_col" prefWidth="150.4000244140625" text="Total Sales(RM)" />
-            </columns>
-        </TableView>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.Dashboard">
+<children>
+    <TableView fx:id="salesReportTable" layoutX="110.0" layoutY="376.0" prefHeight="284.0" prefWidth="942.0" stylesheets="@tableStyle.css" visible="false">
+        <columns>
+            <TableColumn fx:id="AlbumID_col" prefWidth="75.0" text="Album ID" />
+            <TableColumn fx:id="AlbumName_col" prefWidth="221.60003662109375" text="Album Name" />
+            <TableColumn fx:id="Artist_col" prefWidth="188.79998779296875" text="Artist" />
+            <TableColumn fx:id="Price_col" prefWidth="107.99993896484375" text="Price(RM)" />
+            <TableColumn fx:id="totalRentedAlbumQuantity_col" prefWidth="193.5999755859375" text="Total Rented Album Quantity" />
+            <TableColumn fx:id="totalSales_col" prefWidth="150.4000244140625" text="Total Sales(RM)" />
+        </columns>
+    </TableView>
+    <BarChart fx:id="SalesChart" categoryGap="2.0" layoutX="127.0" layoutY="325.0" legendVisible="false" prefHeight="300.0" prefWidth="942.0" styleClass="default-color0" stylesheets="@Style.css" title="Top 5 Popular Album">
+        <xAxis>
+            <NumberAxis fx:id="yAxis" label="Quantity of albums rented" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+            <CategoryAxis cache="true" side="LEFT" fx:id="xAxis" />
+        </yAxis>
+    </BarChart>
 
-        <Label fx:id="totalAlbum_label" layoutX="409.0" layoutY="82.0">
-            <font>
-                <Font name="Roboto" size="64.0" />
-            </font></Label>
+    <Label fx:id="totalAlbum_label" layoutX="312.0" layoutY="267.0" />
 
-        <Label fx:id="totalCustomer_label" layoutX="886.0" layoutY="82.0">
-            <font>
-                <Font name="Roboto" size="64.0" />
-            </font></Label>
-        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="145.0" layoutY="31.0">
-            <image>
-                <Image url="@music-album.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="601.0" layoutY="31.0">
-            <image>
-                <Image url="@customers.png" />
-            </image>
-        </ImageView>
-        <Label layoutX="369.0" layoutY="160.0" text="Total Albums">
-            <font>
-                <Font name="Roboto" size="30.0" />
-            </font>
-        </Label>
-        <Label layoutX="822.0" layoutY="160.0" text="Total Customers">
-            <font>
-                <Font name="Roboto" size="30.0" />
-            </font>
-        </Label>
-    </children>
+    <Label fx:id="totalCustomer_label" layoutX="747.0" layoutY="267.0" />
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="220.0" layoutY="32.0">
+         <image>
+            <Image url="@music-album.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="647.0" layoutY="40.0">
+         <image>
+            <Image url="@customers.png" />
+         </image>
+      </ImageView>
+</children>
 </AnchorPane>
-
-
