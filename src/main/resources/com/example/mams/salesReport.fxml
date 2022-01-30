@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -7,18 +8,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1280.0" style="-fx-background-color: #B2EBF2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.SalesReport">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1280.0" styleClass="background" stylesheets="@tableStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mams.SalesReport">
     <children>
-        <TableView fx:id="salesReportTable" layoutX="110.0" layoutY="376.0" prefHeight="284.0" prefWidth="942.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="370.0">
+        <TableView fx:id="salesReportTable" layoutX="51.0" layoutY="354.0" prefHeight="257.0" prefWidth="1023.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="206.0" AnchorPane.topAnchor="354.0">
             <columns>
                 <TableColumn fx:id="AlbumID_col" prefWidth="99.0" text="Album ID" />
                 <TableColumn fx:id="AlbumName_col" prefWidth="198.66665649414062" text="Album Name" />
@@ -28,49 +26,45 @@
                 <TableColumn fx:id="totalSales_col" prefWidth="198.0" text="Total Sales(RM)" />
             </columns>
         </TableView>
-        <Text fill="#902b2b" layoutX="418.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Report">
-         <font>
-            <Font name="Vladimir Script" size="40.0" />
-         </font></Text>
-        <BarChart fx:id="SalesChart" categoryGap="2.0" layoutX="232.0" layoutY="20.0" legendVisible="false" prefHeight="300.0" prefWidth="844.0" styleClass="default-color0" stylesheets="@Style.css" title="Top 5 Popular Album">
+        <Text fill="#4a4444" layoutX="61.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales Report">
+            <font>
+                <Font name="Roboto" size="38.0" />
+            </font></Text>
+        <BarChart fx:id="SalesChart" categoryGap="2.0" layoutX="256.0" layoutY="20.0" legendVisible="false" prefHeight="270.0" prefWidth="786.0" styleClass="default-color0" stylesheets="@Style.css" title="Top 5 Popular Album">
             <xAxis>
-                <NumberAxis fx:id="yAxis" label="Quantity of albums rented" side="BOTTOM" />
+                <NumberAxis fx:id="yAxis" label="Quantity of Albums Rented" side="BOTTOM" />
             </xAxis>
             <yAxis>
                 <CategoryAxis cache="true" prefHeight="201.0" prefWidth="0.0" side="LEFT" fx:id="xAxis" />
             </yAxis>
-         <effect>
-            <Lighting diffuseConstant="1.14" specularConstant="0.94" specularExponent="16.32" surfaceScale="0.81">
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect>
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
         </BarChart>
-      <ImageView fitHeight="64.0" fitWidth="68.0" layoutX="609.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@album.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="searchTextfield" layoutX="863.0" layoutY="321.0" prefHeight="31.0" prefWidth="219.0" promptText="Enter Keywords Here" />
-      <ImageView fitHeight="20.0" fitWidth="40.0" layoutX="843.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@search.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="761.0" layoutY="325.0" text="Search Item">
+        <TextField fx:id="searchTextfield" layoutX="864.0" layoutY="310.0" prefHeight="31.0" prefWidth="210.0" promptText="Enter Album ID" />
+        <ImageView fitHeight="20.0" fitWidth="40.0" layoutX="844.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@search.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="748.0" layoutY="315.0" text="Search Album" textFill="#4a4444">
+            <font>
+                <Font name="System Bold" size="14.666666984558105" />
+            </font>
+        </Label>
+        <Label fx:id="totalSalesLabel" layoutX="1021.0" layoutY="623.0" text="2020.0" textAlignment="RIGHT" textFill="#4a4444">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="878.0" layoutY="622.0" text="Total Sales (RM): " textFill="#4a4444">
          <font>
             <Font name="System Bold" size="14.666666984558105" />
          </font>
       </Label>
-      <Label fx:id="totalSalesLabel" layoutX="298.0" layoutY="331.0" text="Label" />
-      <Text fill="#902b2b" layoutX="26.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales(RM)">
+      <Label layoutX="502.0" layoutY="14.0" style="-fx-background-color: white;" text="Top 5 Popular Albums">
          <font>
-            <Font name="Vladimir Script" size="40.0" />
+            <Font name="Roboto" size="28.0" />
          </font>
-      </Text>
+      </Label>
     </children>
 </AnchorPane>
