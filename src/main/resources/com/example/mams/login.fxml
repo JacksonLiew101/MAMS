@@ -38,7 +38,7 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="300.0" styleClass="background" stylesheets="@tableStyle.css" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="EmailInput" layoutX="435.0" layoutY="250.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;">
                <font>
@@ -58,7 +58,10 @@
                   <Image url="@unlock.png" />
                </image>
             </ImageView>
-            <Button fx:id="button2" layoutX="390.0" layoutY="400.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="63.0" prefWidth="194.0" style="-fx-background-color: E419C4; -fx-background-color: 7C17BA;" text="Login" textFill="WHITE" />
+            <Button fx:id="button2" layoutX="321.0" layoutY="405.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="48.0" prefWidth="361.0" styleClass="leftPanelBackground" stylesheets="@Style.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
             <Text layoutX="356.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back,">
                <font>
                   <Font name="System Bold" size="43.0" />
