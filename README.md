@@ -50,6 +50,8 @@ _[Works in IntelliJ Community edition]_
 | Refresh Data | User need to manually click refresh after insert or update. |
 | Search Function | User can only search for IDs, string data type and date or year. |
 
+
+The entity-relationship diagram consists of 5 tables, which are CUSTOMER, CARD, RENTAL, ALBUM_RENTAL and ALBUM. 
 ![N|Solid](https://i.imgur.com/grb7yTQ.jpg)
 
 ## License
